@@ -1,0 +1,81 @@
+# Ensayo de despliegue en el Docker del PC Compute, como si fuera el VPS. Se suma a compose.yaml + compose.postgres.yaml +
+# compose.api.yaml + compose.worker.yaml con el proyecto `llenamos-ensayo`. NO es para producción:
+#  - sin túnel ni dominios; solo el gateway publica 127.0.0.1:18080 (la aplicación, puerto 8081 del gateway);
+#  - la identidad es el servicio de ensayo (clave local) en lugar de Firebase Auth; la API corre con NODE_ENV=rehearsal;
+#  - las imágenes son locales (no hay registro) y las copias van a una carpeta que simula el destino externo.
+services:
+  gateway:
+    ports: !override
+      - 127.0.0.1:18080:8081
+  api:
+    environment:
+      NODE_ENV: rehearsal
+      FIREBASE_PROJECT_ID: llenamos-ensayo
+      REHEARSAL_IDENTITY_URL: http://identity:9102
+      REHEARSAL_IDENTITY_SECRET_FILE: /run/secrets/rehearsal_identity_secret
+      PLATFORM_INVITATION_KEY_FILE: /run/secrets/platform_invitation_key
+      PLATFORM_INTEGRATION_KEY_FILE: /run/secrets/platform_integration_key
+    secrets: [rehearsal_identity_secret, platform_invitation_key, platform_integration_key]
+    depends_on:
+      identity: {condition: service_healthy}
+  identity:
+    image: ${IDENTITY_IMAGE:?Imagen base de Node}
+    profiles: [vps-backend]
+    restart: unless-stopped
+    init: true
+    command: [node, /ensayo/server.mjs]
+    user: "1000:1000"
+    mem_limit: 128m
+    cpus: 0.25
+    environment:
+      PORT: 9102
+      REHEARSAL_ADMIN_SECRET_FILE: /run/secrets/rehearsal_identity_secret
+      REHEARSAL_STATE_FILE: /home/node/identity.json
+    secrets: [rehearsal_identity_secret]
+    volumes:
+      - ${ENSAYO_IDENTITY_DIR:?}:/ensayo:ro
+      - identity_state:/home/node
+    networks: [application]
+    read_only: true
+    tmpfs: [/tmp]
+    security_opt: [no-new-privileges:true]
+    cap_drop: [ALL]
+    healthcheck:
+      test: [CMD, node, -e, "fetch('http://127.0.0.1:9102/healthz').then(r=>process.exit(r.ok?0:1)).catch(()=>process.exit(1))"]
+      interval: 10s
+      timeout: 5s
+    logging:
+      driver: json-file
+      options: {max-size: 10m, max-file: '3'}
+  worker:
+    environment:
+      NODE_ENV: rehearsal
+  # Migración con el rol bootstrap, en un proceso aparte que nunca comparte credencial con la API.
+  migrate:
+    image: ${API_IMAGE:?Imagen API}
+    profiles: [migrate]
+    command: [node, dist/migrate.js]
+    environment:
+      MIGRATION_DATABASE_URL_FILE: /run/secrets/bootstrap_database_url
+    secrets: [bootstrap_database_url]
+    networks: [database]
+    read_only: true
+    cap_drop: [ALL]
+    security_opt: [no-new-privileges:true]
+  backup:
+    volumes:
+      - ${ENSAYO_EXTERNO_DIR:?Carpeta del destino externo simulado}:/external
+  ledger:
+    volumes:
+      - ${ENSAYO_EXTERNO_DIR:?Carpeta del destino externo simulado}:/external
+volumes:
+  identity_state:
+secrets:
+  rehearsal_identity_secret:
+    file: ${REHEARSAL_IDENTITY_SECRET_FILE_PATH:?}
+  platform_invitation_key:
+    file: ${PLATFORM_INVITATION_KEY_FILE:?}
+  platform_integration_key:
+    file: ${PLATFORM_INTEGRATION_KEY_FILE:?}
+  bootstrap_database_url:
+    file: ${BOOTSTRAP_DATABASE_URL_FILE:?}

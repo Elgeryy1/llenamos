@@ -1,0 +1,26 @@
+Validación local del 9 de noviembre de 2026
+Rama: fase3/backend. Proyecto: demo-llenamos. Puertos de la fila 3.
+
+pnpm install --frozen-lockfile: código 0
+pnpm funciones:build: código 0
+pnpm lint && pnpm typecheck && pnpm test && pnpm build: código 0
+Unitarias: core 373, funciones 72, web 439. Total: 884.
+
+Funciones contra emuladores, en dos bloques sin cambiar aserciones:
+ Test Files  2 passed (2)
+      Tests  6 passed (6)
+ Test Files  10 passed | 3 skipped (13)
+      Tests  128 passed | 11 skipped (139)
+✔  Script exited successfully (code 0)
+
+Reglas de Firestore y Storage:
+ Test Files  3 passed (3)
+      Tests  91 passed (91)
+✔  Script exited successfully (code 0)
+
+Chromium: 24 llamadas HTTP; cuenta settled; cobrado 1225; devuelto 100; cambio 250; diferencia de arqueo 0.
+Dos cobros simultáneos: rejected, fulfilled.
+Proveedor: no válido para Hacienda. Sin servicios fiscales ni Stripe reales.
+
+Capturas: escritorio 2880 × 1800 y móvil 780 × 1688, escala 2x.
+Sin dependencias nuevas. Sin cambios de core ni de firmas. Sin commit ni push.

@@ -1,0 +1,80 @@
+[
+  {
+    "size": "escritorio",
+    "capture": "sala",
+    "caption": "Captura del panel de Taberna Lumbre, nuestro restaurante de demostración",
+    "alt": "Sala de Taberna Lumbre en directo: ocupación, plano con mesas sentadas y ficha de la mesa S2 con su reserva y tiempo de estancia.",
+    "width": 2880,
+    "height": 1800,
+    "declaredWidth": 1094,
+    "expectedWidth": 2880,
+    "expectedHeight": 1800,
+    "left": 173,
+    "right": 1267
+  },
+  {
+    "size": "escritorio",
+    "capture": "movil",
+    "caption": "Captura de la web de reservas de Taberna Lumbre, nuestro restaurante de demostración",
+    "alt": "Página móvil para reservar en Taberna Lumbre: selección de dos personas, día de mañana, idiomas y botón Continuar para una reserva a las 13:00.",
+    "width": 780,
+    "height": 1688,
+    "declaredWidth": 360,
+    "expectedWidth": 780,
+    "expectedHeight": 1688,
+    "left": 160,
+    "right": 520
+  },
+  {
+    "size": "escritorio",
+    "capture": "reservas",
+    "caption": "Captura del panel de Taberna Lumbre, nuestro restaurante de demostración",
+    "alt": "Reservas de la cena de Taberna Lumbre: resumen de cubiertos, llegadas por media hora y lista de reservas junto al plano de mesas.",
+    "width": 2880,
+    "height": 1800,
+    "declaredWidth": 720,
+    "expectedWidth": 2880,
+    "expectedHeight": 1800,
+    "left": 560,
+    "right": 1280
+  },
+  {
+    "size": "movil",
+    "capture": "sala",
+    "caption": "Captura del panel de Taberna Lumbre, nuestro restaurante de demostración",
+    "alt": "Sala de Taberna Lumbre en directo: ocupación, plano con mesas sentadas y ficha de la mesa S2 con su reserva y tiempo de estancia.",
+    "width": 2880,
+    "height": 1800,
+    "declaredWidth": 340,
+    "expectedWidth": 2880,
+    "expectedHeight": 1800,
+    "left": 25,
+    "right": 365
+  },
+  {
+    "size": "movil",
+    "capture": "movil",
+    "caption": "Captura de la web de reservas de Taberna Lumbre, nuestro restaurante de demostración",
+    "alt": "Página móvil para reservar en Taberna Lumbre: selección de dos personas, día de mañana, idiomas y botón Continuar para una reserva a las 13:00.",
+    "width": 780,
+    "height": 1688,
+    "declaredWidth": 358,
+    "expectedWidth": 780,
+    "expectedHeight": 1688,
+    "left": 16,
+    "right": 374
+  },
+  {
+    "size": "movil",
+    "capture": "reservas",
+    "caption": "Captura del panel de Taberna Lumbre, nuestro restaurante de demostración",
+    "alt": "Reservas de la cena de Taberna Lumbre: resumen de cubiertos, llegadas por media hora y lista de reservas junto al plano de mesas.",
+    "width": 2880,
+    "height": 1800,
+    "declaredWidth": 358,
+    "expectedWidth": 2880,
+    "expectedHeight": 1800,
+    "left": 16,
+    "right": 374
+  }
+]

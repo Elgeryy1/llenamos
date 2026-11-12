@@ -1,0 +1,158 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<title>Reservar en Taberna Lumbre</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600&amp;family=Geist+Mono:wght@400;500&amp;display=swap">
+<style>
+body{margin:0;background:#131209}
+a{color:#a39f95}a:hover{color:#f4f1ea}
+button{font:inherit;color:inherit}
+button:focus-visible,a:focus-visible{outline:2px solid #f4f1ea;outline-offset:2px}
+button:disabled{cursor:not-allowed}
+</style>
+</helmet>
+<div style="width: 390px; height: 844px; box-sizing: border-box; position: relative; overflow: hidden; background: #131209; color: #f4f1ea; font-family: Geist, system-ui, sans-serif; font-size: 15px; line-height: 1.45; display: flex; flex-direction: column">
+  <div style="flex-grow: 1; overflow-y: auto; padding: 18px 20px 120px; display: flex; flex-direction: column; gap: 26px">
+    <div style="display: flex; justify-content: space-between; align-items: center">
+      <span aria-hidden="true" style="width: 36px; height: 36px; border-radius: 10px; background: #1f1f1f; border: 1px solid rgba(244,241,234,0.1); display: flex; align-items: center; justify-content: center; font-weight: 600; font-size: 13px; color: {{accent}}">TL</span>
+      <div role="group" aria-label="Idioma" style="display: flex; gap: 2px; font-size: 13px">
+        <button type="button" aria-pressed="true" style="height: 30px; min-width: 36px; border-radius: 6px; border: 0; background: #1f1f1f; cursor: pointer">ES</button>
+        <button type="button" style="height: 30px; min-width: 36px; border-radius: 6px; border: 0; background: transparent; color: #a39f95; cursor: pointer">CA</button>
+        <button type="button" style="height: 30px; min-width: 36px; border-radius: 6px; border: 0; background: transparent; color: #a39f95; cursor: pointer">EN</button>
+      </div>
+    </div>
+
+    <header style="display: flex; flex-direction: column; gap: 6px">
+      <h1 style="margin: 0; font-size: 28px; font-weight: 600; letter-spacing: -0.02em; line-height: 1.15">Taberna Lumbre</h1>
+      <p style="margin: 0; color: #a39f95; font-size: 14px">Cocina de brasa · Gràcia, Barcelona</p>
+    </header>
+
+    <section aria-labelledby="personas" style="display: flex; flex-direction: column; gap: 10px">
+      <h2 id="personas" style="margin: 0; font-size: 13px; font-weight: 500; color: #a39f95">Personas</h2>
+      <div style="display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 8px">
+        <sc-for list="{{sizes}}" as="s" hint-placeholder-count="8">
+          <button type="button" aria-pressed="{{s.on}}" onClick="{{s.pick}}" style="height: 46px; border-radius: 10px; border: 1px solid {{s.border}}; background: {{s.bg}}; color: {{s.fg}}; font-family: 'Geist Mono', monospace; font-size: 15px; cursor: pointer">{{s.label}}</button>
+        </sc-for>
+      </div>
+      <sc-if value="{{bigGroup}}" hint-placeholder-val="{{false}}">
+        <p style="margin: 0; font-size: 13px; color: #a39f95">Para más de 8 personas, llama al restaurante y te preparamos la mesa.</p>
+      </sc-if>
+    </section>
+
+    <section aria-labelledby="dia" style="display: flex; flex-direction: column; gap: 10px">
+      <h2 id="dia" style="margin: 0; font-size: 13px; font-weight: 500; color: #a39f95">Día</h2>
+      <div style="display: flex; gap: 8px; overflow-x: auto; margin: 0 -20px; padding: 0 20px 4px">
+        <sc-for list="{{days}}" as="d" hint-placeholder-count="7">
+          <button type="button" aria-pressed="{{d.on}}" onClick="{{d.pick}}" disabled="{{d.closed}}" style="flex: 0 0 62px; height: 66px; border-radius: 10px; border: 1px solid {{d.border}}; background: {{d.bg}}; color: {{d.fg}}; cursor: pointer; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 2px">
+            <span style="font-size: 12px; color: {{d.subFg}}">{{d.dow}}</span>
+            <span style="font-family: 'Geist Mono', monospace; font-size: 17px">{{d.num}}</span>
+          </button>
+        </sc-for>
+      </div>
+    </section>
+
+    <section aria-labelledby="hora" style="display: flex; flex-direction: column; gap: 14px">
+      <h2 id="hora" style="margin: 0; font-size: 13px; font-weight: 500; color: #a39f95">Hora</h2>
+      <sc-for list="{{turns}}" as="t" hint-placeholder-count="2">
+        <div style="display: flex; flex-direction: column; gap: 8px">
+          <span style="font-size: 13px">{{t.label}}</span>
+          <div style="display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 8px">
+            <sc-for list="{{t.slots}}" as="h" hint-placeholder-count="8">
+              <button type="button" aria-pressed="{{h.on}}" onClick="{{h.pick}}" disabled="{{h.full}}" aria-label="{{h.aria}}" style="height: 44px; border-radius: 10px; border: 1px solid {{h.border}}; background: {{h.bg}}; color: {{h.fg}}; font-family: 'Geist Mono', monospace; font-size: 14px; text-decoration: {{h.strike}}; cursor: pointer">{{h.time}}</button>
+            </sc-for>
+          </div>
+        </div>
+      </sc-for>
+      <p style="margin: 0; font-size: 13px; color: #a39f95">¿No ves tu hora? Apúntate a la <a href="#espera">lista de espera</a> y te avisamos si se libera una mesa.</p>
+    </section>
+
+    <p style="margin: 0; font-size: 12.5px; color: #a39f95">Grupos de 5 o más: señal de 5 € por persona, que se descuenta de la cuenta. Puedes cancelar gratis hasta 24 horas antes.</p>
+    <span style="font-size: 12px; color: #6f6b62; display: flex; align-items: center; gap: 6px">Reservas con <span style="color: #a39f95; font-weight: 500">llenamos</span></span>
+  </div>
+
+  <div style="position: absolute; left: 0; right: 0; bottom: 0; padding: 14px 20px 26px; background: #131209; border-top: 1px solid rgba(244,241,234,0.08); display: flex; flex-direction: column; gap: 8px">
+    <span style="font-size: 13px; color: #a39f95; text-align: center">{{summary}}</span>
+    <button type="button" disabled="{{noTime}}" style="height: 52px; border-radius: 12px; border: 0; background: {{ctaBg}}; color: {{ctaFg}}; font-weight: 600; font-size: 16px; cursor: pointer">{{ctaLabel}}</button>
+  </div>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"accent":{"editor":"color","default":"#f0a35e","options":["#f0a35e","#8fc7a0","#e8857a","#f4f1ea"]},"$preview":{"width":390,"height":844}}'>
+class Component extends DCLogic {
+  constructor(props) {
+    super(props);
+    this.state = { size: 2, day: 3, time: null };
+  }
+  renderVals() {
+    const accent = this.props.accent ?? '#f0a35e';
+    const { size, day, time } = this.state;
+    const on = (yes) => ({
+      border: yes ? accent : 'rgba(244,241,234,0.12)',
+      bg: yes ? accent : '#181818',
+      fg: yes ? '#1a1408' : '#f4f1ea'
+    });
+    const sizes = [1, 2, 3, 4, 5, 6, 7, '8+'].map((n) => {
+      const v = n === '8+' ? 9 : n;
+      return { label: String(n), on: size === v, ...on(size === v), pick: () => this.setState({ size: v, time: null }) };
+    });
+    const D = [['hoy', 9], ['mar', 10], ['mié', 11], ['jue', 12], ['vie', 13], ['sáb', 14], ['dom', 15], ['lun', 16], ['mar', 17]];
+    const days = D.map(([dow, num], i) => {
+      const closed = i === 7;
+      const yes = day === i;
+      const c = on(yes);
+      return {
+        dow: closed ? 'cerrado' : dow, num, on: yes, closed,
+        border: closed ? 'rgba(244,241,234,0.05)' : c.border,
+        bg: closed ? 'transparent' : c.bg,
+        fg: closed ? '#5f5b53' : c.fg,
+        subFg: yes ? '#1a1408' : '#a39f95',
+        pick: () => this.setState({ day: i, time: null })
+      };
+    });
+    const fullFor = (t) => {
+      const busy = { '21:00': 2, '21:15': 4, '14:00': 6 };
+      if (day === 5) return t >= '20:30' || t === '14:00' || t === '14:15';
+      if (day === 0) return t < '21:30';
+      return (busy[t] || 99) <= size || (size >= 5 && (t === '20:30' || t === '13:30'));
+    };
+    const mk = (list) => list.map((t) => {
+      const full = fullFor(t);
+      const yes = time === t;
+      const c = on(yes);
+      return {
+        time: t, full, on: yes,
+        aria: full ? t + ', completo' : t,
+        border: full ? 'rgba(244,241,234,0.05)' : c.border,
+        bg: full ? 'transparent' : c.bg,
+        fg: full ? '#5f5b53' : c.fg,
+        strike: full ? 'line-through' : 'none',
+        pick: () => this.setState({ time: t })
+      };
+    });
+    const turns = [];
+    if (day !== 0 && day !== 6) turns.push({ label: 'Comida', slots: mk(['13:00', '13:30', '14:00', '14:15', '14:30', '15:00']) });
+    if (day !== 6) turns.push({ label: 'Cena', slots: mk(['20:00', '20:30', '21:00', '21:15', '21:30', '22:00', '22:15', '22:30']) });
+    if (day === 6) turns.push({ label: 'Comida', slots: mk(['13:00', '13:30', '14:00', '14:30', '15:00', '15:30']) });
+    const people = size === 9 ? 'más de 8 personas' : size + (size === 1 ? ' persona' : ' personas');
+    const dayLabel = day === 0 ? 'hoy' : D[day][0] + ' ' + D[day][1] + ' nov';
+    const noTime = !time || size === 9;
+    return {
+      accent, sizes, days, turns,
+      bigGroup: size === 9,
+      noTime,
+      summary: people + ' · ' + dayLabel + (time ? ' · ' + time : ''),
+      ctaLabel: size === 9 ? 'Llámanos para grupos' : time ? 'Continuar' : 'Elige una hora',
+      ctaBg: noTime ? '#24221d' : accent,
+      ctaFg: noTime ? '#a39f95' : '#1a1408'
+    };
+  }
+}
+</script>
+</body>
+</html>

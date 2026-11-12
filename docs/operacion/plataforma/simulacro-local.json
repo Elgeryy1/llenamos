@@ -1,0 +1,22 @@
+{
+  "at": "2026-11-10T07:44:39.163Z",
+  "restaurantId": "demo-lumbre",
+  "status": "passed",
+  "checks": {
+    "hashes": true,
+    "counts": true,
+    "fiscalChains": true,
+    "tenantIsolation": true,
+    "privacyTombstones": true,
+    "outboxes": true
+  },
+  "records": 208,
+  "encryptedBytes": 91717,
+  "measuredRpoMs": 1259,
+  "measuredRtoMs": 444,
+  "outboundDisabled": true,
+  "sourceQueueUnchanged": true,
+  "restoredMessageStatus": "restore_quarantine",
+  "otherTenantUnchanged": true,
+  "scope": "Simulacro local aislado. No habilita caja ni demuestra conciliación de proveedores reales."
+}

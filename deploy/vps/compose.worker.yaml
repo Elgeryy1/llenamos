@@ -1,0 +1,108 @@
+# Worker, archivos privados y copias. Se añade a compose.api.yaml + compose.postgres.yaml + compose.identity.yaml.
+# Presupuesto de memoria: worker 128 MiB. La API comparte el volumen de archivos, fuera de la raíz pública.
+# El rol de base de datos del worker (miembro de llenamos_worker y llenamos_app) se crea en README.md.
+services:
+  api:
+    environment:
+      FILES_ROOT: /data/files
+      PUBLIC_APP_URL: ${PUBLIC_APP_URL:?Origen HTTPS de la aplicación obligatorio}
+      # Login propio del receptor de webhooks (rol llenamos_webhook, NO miembro de llenamos_app). Sin él no hay webhooks.
+      WEBHOOK_DATABASE_URL_FILE: /run/secrets/webhook_database_url
+      # Custodia de los enlaces de mesa y de seguimiento de recogida (la API los crea, el worker los abre para el aviso).
+      SALA_SECRET_KEY_FILE: /run/secrets/sala_secret_key
+      # Avisos al móvil (Web Push): la API da la clave pública y guarda suscripciones; el worker firma y envía. Vacíos = sin avisos.
+      VAPID_PUBLIC_KEY: ${VAPID_PUBLIC_KEY:-}
+      VAPID_SUBJECT: ${VAPID_SUBJECT:-}
+      VAPID_PRIVATE_KEY_FILE: /run/secrets/vapid_private_key
+    secrets: [webhook_database_url, sala_secret_key, vapid_private_key]
+    volumes: [files_data:/data/files]
+  worker:
+    image: ${API_IMAGE:?Imagen API versionada obligatoria}
+    profiles: [vps-backend]
+    command: [node, dist/worker-main.js]
+    restart: unless-stopped
+    init: true
+    mem_limit: 128m
+    cpus: 0.5
+    environment:
+      NODE_ENV: production
+      NODE_OPTIONS: --max-old-space-size=96
+      DATABASE_URL_FILE: /run/secrets/worker_database_url
+      PLATFORM_INTEGRATION_KEY_FILE: /run/secrets/platform_integration_key
+      SALA_SECRET_KEY_FILE: /run/secrets/sala_secret_key
+      VAPID_PUBLIC_KEY: ${VAPID_PUBLIC_KEY:-}
+      VAPID_SUBJECT: ${VAPID_SUBJECT:-}
+      VAPID_PRIVATE_KEY_FILE: /run/secrets/vapid_private_key
+      FILES_ROOT: /data/files
+      WORKER_CONCURRENCY: 2
+    secrets: [worker_database_url, platform_integration_key, sala_secret_key, vapid_private_key]
+    volumes: [files_data:/data/files]
+    # Sin publicar puertos: solo sale hacia PostgreSQL (red interna) y hacia los proveedores (correo, WhatsApp).
+    networks: [database, api_egress]
+    depends_on:
+      postgres: {condition: service_healthy}
+    security_opt: [no-new-privileges:true]
+    cap_drop: [ALL]
+    read_only: true
+    tmpfs: [/tmp]
+    healthcheck:
+      # El worker escribe un latido al sondear la cola: si se cuelga, deja de latir y el contenedor se marca no saludable.
+      test: [CMD, node, -e, "const s=require('node:fs').statSync('/tmp/worker-heartbeat');process.exit(Date.now()-s.mtimeMs<120000?0:1)"]
+      interval: 60s
+      timeout: 5s
+      start_period: 60s
+    logging:
+      driver: json-file
+      options: {max-size: 10m, max-file: '3'}
+  # Copia cifrada bajo demanda o por temporizador del host: `docker compose --profile backup run --rm backup`.
+  # Imagen propia (deploy/vps/backup/Dockerfile): cliente PostgreSQL + rsync/ssh, uid 1000 como la API (dueña de los
+  # archivos 0600), /backups preparado para el volumen. Rol de copia con BYPASSRLS y solo lectura.
+  backup: &backup
+    image: ${BACKUP_IMAGE:?Imagen de copias versionada obligatoria}
+    profiles: [backup]
+    user: "1000:1000"
+    mem_limit: 256m
+    environment: &backup_env
+      PGURI_FILE: /run/secrets/backup_database_url
+      PGPASS_FILE: /run/secrets/backup_pgpass
+      FILES_ROOT: /data/files
+      BACKUP_KEY_FILE: /run/secrets/backup_custody_key
+      BACKUP_DIR: /backups
+      # Destino fuera del VPS (rsync por SSH, rclone…). Sin él la copia se rechaza.
+      BACKUP_UPLOAD_CMD: ${BACKUP_UPLOAD_CMD:?Destino externo de las copias obligatorio}
+    # backup_upload: credenciales del destino externo en formato de configuración de curl (`user = "ID:SECRETO"`), para usarlas
+    # con `curl -K /run/secrets/backup_upload` sin que aparezcan en argumentos ni en el entorno. Vacío si el destino no las necesita.
+    secrets: [backup_database_url, backup_pgpass, backup_custody_key, backup_upload]
+    volumes:
+      - files_data:/data/files:ro
+      - backups_local:/backups
+    networks: [database, api_egress]
+    security_opt: [no-new-privileges:true]
+    cap_drop: [ALL]
+  # Registro de borrados de privacidad fuera de la base (ver backup/ledger.sh): programarlo cada hora.
+  ledger:
+    <<: *backup
+    entrypoint: [sh, /backup/ledger.sh]
+volumes:
+  files_data:
+  backups_local:
+secrets:
+  worker_database_url:
+    file: ${WORKER_DATABASE_URL_FILE:-./secrets/worker_database_url}
+  # 64 hexadecimales (32 bytes): `openssl rand -hex 32`. La MISMA en API y worker; si cambia, los enlaces ya emitidos dejan de abrirse.
+  sala_secret_key:
+    file: ${SALA_SECRET_KEY_FILE:-./secrets/sala_secret_key}
+  vapid_private_key:
+    file: ${VAPID_PRIVATE_KEY_FILE:-./secrets/vapid_private_key}
+  webhook_database_url:
+    file: ${WEBHOOK_DATABASE_URL_FILE:-./secrets/webhook_database_url}
+  # URI sin contraseña; la contraseña va aparte en un fichero tipo .pgpass para que no aparezca en argumentos.
+  backup_database_url:
+    file: ${BACKUP_DATABASE_URL_FILE:-./secrets/backup_database_url}
+  backup_pgpass:
+    file: ${BACKUP_PGPASS_FILE:-./secrets/backup_pgpass}
+  # Clave de custodia: guardada también fuera del VPS y nunca junto a las copias ni a la clave de integraciones.
+  backup_custody_key:
+    file: ${BACKUP_CUSTODY_KEY_FILE:-./secrets/backup_custody_key}
+  backup_upload:
+    file: ${BACKUP_UPLOAD_FILE:-./secrets/backup_upload}

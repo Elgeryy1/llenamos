@@ -1,0 +1,945 @@
+{
+  "before": {
+    "enrolled": true,
+    "available": 120,
+    "expiringIn30Days": 0,
+    "earned": 120,
+    "redeemed": 0,
+    "expired": 0,
+    "movements": [
+      {
+        "id": "adjust.790c1cbfe4bc1311fd52cc9ae689119a",
+        "kind": "adjust",
+        "points": 120,
+        "balanceAfter": 120,
+        "at": 1794305906100,
+        "reason": "Saldo inventado para la demostración local"
+      }
+    ],
+    "rewards": [
+      {
+        "rewardId": "HE4AutZNUQI8OtlAV0i5",
+        "name": "Café de la casa",
+        "pointsCost": 30,
+        "affordable": true
+      },
+      {
+        "rewardId": "vThRubVcr6bgFq6Qz0Eg",
+        "name": "Un postre para volver",
+        "pointsCost": 80,
+        "affordable": true
+      }
+    ]
+  },
+  "redeem": {
+    "status": "applied",
+    "redemptionId": "9a784c8d1359756b53e2a0d6ac52a06c",
+    "points": 80,
+    "discountCents": 700,
+    "available": 40,
+    "billRevision": 2
+  },
+  "repeated": {
+    "status": "applied",
+    "redemptionId": "9a784c8d1359756b53e2a0d6ac52a06c",
+    "points": 80,
+    "discountCents": 700,
+    "available": 40,
+    "billRevision": 2
+  },
+  "after": {
+    "enrolled": true,
+    "available": 40,
+    "expiringIn30Days": 0,
+    "earned": 120,
+    "redeemed": 80,
+    "expired": 0,
+    "movements": [
+      {
+        "id": "redeem.9a784c8d1359756b53e2a0d6ac52a06c",
+        "kind": "redeem",
+        "points": -80,
+        "balanceAfter": 40,
+        "at": 1794305988072,
+        "reason": null
+      },
+      {
+        "id": "adjust.790c1cbfe4bc1311fd52cc9ae689119a",
+        "kind": "adjust",
+        "points": 120,
+        "balanceAfter": 120,
+        "at": 1794305906100,
+        "reason": "Saldo inventado para la demostración local"
+      }
+    ],
+    "rewards": [
+      {
+        "rewardId": "HE4AutZNUQI8OtlAV0i5",
+        "name": "Café de la casa",
+        "pointsCost": 30,
+        "affordable": true
+      },
+      {
+        "rewardId": "vThRubVcr6bgFq6Qz0Eg",
+        "name": "Un postre para volver",
+        "pointsCost": 80,
+        "affordable": false
+      }
+    ]
+  },
+  "card": {
+    "status": "queued"
+  },
+  "forecast": {
+    "seats": 62,
+    "days": [
+      {
+        "date": "2026-11-11",
+        "samples": 11,
+        "sampleDates": [
+          "2026-11-04",
+          "2026-10-28",
+          "2026-10-21",
+          "2026-10-14",
+          "2026-10-07",
+          "2026-09-30",
+          "2026-09-23",
+          "2026-09-09",
+          "2026-09-02",
+          "2026-08-26",
+          "2026-08-19"
+        ],
+        "confidence": "medium",
+        "volatile": true,
+        "slots": [
+          {
+            "slot": "13:00",
+            "minutes": 780,
+            "expected": 3,
+            "booked": 0,
+            "projected": 3,
+            "occupancyBp": 484
+          },
+          {
+            "slot": "13:15",
+            "minutes": 795,
+            "expected": 3,
+            "booked": 0,
+            "projected": 3,
+            "occupancyBp": 484
+          },
+          {
+            "slot": "13:30",
+            "minutes": 810,
+            "expected": 3,
+            "booked": 2,
+            "projected": 3,
+            "occupancyBp": 484
+          },
+          {
+            "slot": "13:45",
+            "minutes": 825,
+            "expected": 3,
+            "booked": 2,
+            "projected": 3,
+            "occupancyBp": 484
+          },
+          {
+            "slot": "14:00",
+            "minutes": 840,
+            "expected": 3,
+            "booked": 2,
+            "projected": 3,
+            "occupancyBp": 484
+          },
+          {
+            "slot": "14:15",
+            "minutes": 855,
+            "expected": 3,
+            "booked": 2,
+            "projected": 3,
+            "occupancyBp": 484
+          },
+          {
+            "slot": "14:30",
+            "minutes": 870,
+            "expected": 0,
+            "booked": 2,
+            "projected": 2,
+            "occupancyBp": 323
+          },
+          {
+            "slot": "14:45",
+            "minutes": 885,
+            "expected": 0,
+            "booked": 2,
+            "projected": 2,
+            "occupancyBp": 323
+          }
+        ],
+        "peak": "13:00"
+      },
+      {
+        "date": "2026-11-12",
+        "samples": 11,
+        "sampleDates": [
+          "2026-11-05",
+          "2026-10-29",
+          "2026-10-22",
+          "2026-10-15",
+          "2026-10-01",
+          "2026-09-24",
+          "2026-09-17",
+          "2026-09-10",
+          "2026-09-03",
+          "2026-08-27",
+          "2026-08-20"
+        ],
+        "confidence": "medium",
+        "volatile": true,
+        "slots": [
+          {
+            "slot": "13:00",
+            "minutes": 780,
+            "expected": 3,
+            "booked": 0,
+            "projected": 3,
+            "occupancyBp": 484
+          },
+          {
+            "slot": "13:15",
+            "minutes": 795,
+            "expected": 3,
+            "booked": 0,
+            "projected": 3,
+            "occupancyBp": 484
+          },
+          {
+            "slot": "13:30",
+            "minutes": 810,
+            "expected": 3,
+            "booked": 0,
+            "projected": 3,
+            "occupancyBp": 484
+          },
+          {
+            "slot": "13:45",
+            "minutes": 825,
+            "expected": 3,
+            "booked": 0,
+            "projected": 3,
+            "occupancyBp": 484
+          },
+          {
+            "slot": "14:00",
+            "minutes": 840,
+            "expected": 3,
+            "booked": 0,
+            "projected": 3,
+            "occupancyBp": 484
+          },
+          {
+            "slot": "14:15",
+            "minutes": 855,
+            "expected": 3,
+            "booked": 0,
+            "projected": 3,
+            "occupancyBp": 484
+          }
+        ],
+        "peak": "13:00"
+      },
+      {
+        "date": "2026-11-13",
+        "samples": 11,
+        "sampleDates": [
+          "2026-11-06",
+          "2026-10-23",
+          "2026-10-16",
+          "2026-10-09",
+          "2026-10-02",
+          "2026-09-25",
+          "2026-09-18",
+          "2026-09-11",
+          "2026-09-04",
+          "2026-08-28",
+          "2026-08-21"
+        ],
+        "confidence": "medium",
+        "volatile": true,
+        "slots": [
+          {
+            "slot": "13:00",
+            "minutes": 780,
+            "expected": 3,
+            "booked": 0,
+            "projected": 3,
+            "occupancyBp": 484
+          },
+          {
+            "slot": "13:15",
+            "minutes": 795,
+            "expected": 3,
+            "booked": 0,
+            "projected": 3,
+            "occupancyBp": 484
+          },
+          {
+            "slot": "13:30",
+            "minutes": 810,
+            "expected": 3,
+            "booked": 0,
+            "projected": 3,
+            "occupancyBp": 484
+          },
+          {
+            "slot": "13:45",
+            "minutes": 825,
+            "expected": 3,
+            "booked": 0,
+            "projected": 3,
+            "occupancyBp": 484
+          },
+          {
+            "slot": "14:00",
+            "minutes": 840,
+            "expected": 3,
+            "booked": 0,
+            "projected": 3,
+            "occupancyBp": 484
+          },
+          {
+            "slot": "14:15",
+            "minutes": 855,
+            "expected": 3,
+            "booked": 0,
+            "projected": 3,
+            "occupancyBp": 484
+          }
+        ],
+        "peak": "13:00"
+      },
+      {
+        "date": "2026-11-14",
+        "samples": 11,
+        "sampleDates": [
+          "2026-11-07",
+          "2026-10-31",
+          "2026-10-24",
+          "2026-10-17",
+          "2026-10-10",
+          "2026-10-03",
+          "2026-09-26",
+          "2026-09-19",
+          "2026-09-12",
+          "2026-08-29",
+          "2026-08-22"
+        ],
+        "confidence": "medium",
+        "volatile": true,
+        "slots": [
+          {
+            "slot": "13:00",
+            "minutes": 780,
+            "expected": 3,
+            "booked": 0,
+            "projected": 3,
+            "occupancyBp": 484
+          },
+          {
+            "slot": "13:15",
+            "minutes": 795,
+            "expected": 3,
+            "booked": 0,
+            "projected": 3,
+            "occupancyBp": 484
+          },
+          {
+            "slot": "13:30",
+            "minutes": 810,
+            "expected": 3,
+            "booked": 0,
+            "projected": 3,
+            "occupancyBp": 484
+          },
+          {
+            "slot": "13:45",
+            "minutes": 825,
+            "expected": 3,
+            "booked": 0,
+            "projected": 3,
+            "occupancyBp": 484
+          },
+          {
+            "slot": "14:00",
+            "minutes": 840,
+            "expected": 3,
+            "booked": 0,
+            "projected": 3,
+            "occupancyBp": 484
+          },
+          {
+            "slot": "14:15",
+            "minutes": 855,
+            "expected": 3,
+            "booked": 0,
+            "projected": 3,
+            "occupancyBp": 484
+          }
+        ],
+        "peak": "13:00"
+      },
+      {
+        "date": "2026-11-15",
+        "samples": 11,
+        "sampleDates": [
+          "2026-11-08",
+          "2026-11-01",
+          "2026-10-25",
+          "2026-10-18",
+          "2026-10-11",
+          "2026-10-04",
+          "2026-09-20",
+          "2026-09-13",
+          "2026-09-06",
+          "2026-08-30",
+          "2026-08-23"
+        ],
+        "confidence": "medium",
+        "volatile": true,
+        "slots": [
+          {
+            "slot": "13:00",
+            "minutes": 780,
+            "expected": 3,
+            "booked": 0,
+            "projected": 3,
+            "occupancyBp": 484
+          },
+          {
+            "slot": "13:15",
+            "minutes": 795,
+            "expected": 3,
+            "booked": 0,
+            "projected": 3,
+            "occupancyBp": 484
+          },
+          {
+            "slot": "13:30",
+            "minutes": 810,
+            "expected": 3,
+            "booked": 0,
+            "projected": 3,
+            "occupancyBp": 484
+          },
+          {
+            "slot": "13:45",
+            "minutes": 825,
+            "expected": 3,
+            "booked": 0,
+            "projected": 3,
+            "occupancyBp": 484
+          },
+          {
+            "slot": "14:00",
+            "minutes": 840,
+            "expected": 3,
+            "booked": 0,
+            "projected": 3,
+            "occupancyBp": 484
+          },
+          {
+            "slot": "14:15",
+            "minutes": 855,
+            "expected": 3,
+            "booked": 0,
+            "projected": 3,
+            "occupancyBp": 484
+          }
+        ],
+        "peak": "13:00"
+      },
+      {
+        "date": "2026-11-16",
+        "samples": 0,
+        "sampleDates": [],
+        "confidence": "low",
+        "volatile": false,
+        "slots": [],
+        "peak": null
+      },
+      {
+        "date": "2026-11-17",
+        "samples": 10,
+        "sampleDates": [
+          "2026-11-03",
+          "2026-10-27",
+          "2026-10-20",
+          "2026-10-13",
+          "2026-10-06",
+          "2026-09-29",
+          "2026-09-22",
+          "2026-09-15",
+          "2026-09-08",
+          "2026-09-01"
+        ],
+        "confidence": "medium",
+        "volatile": true,
+        "slots": [
+          {
+            "slot": "13:00",
+            "minutes": 780,
+            "expected": 3,
+            "booked": 0,
+            "projected": 3,
+            "occupancyBp": 484
+          },
+          {
+            "slot": "13:15",
+            "minutes": 795,
+            "expected": 3,
+            "booked": 0,
+            "projected": 3,
+            "occupancyBp": 484
+          },
+          {
+            "slot": "13:30",
+            "minutes": 810,
+            "expected": 3,
+            "booked": 0,
+            "projected": 3,
+            "occupancyBp": 484
+          },
+          {
+            "slot": "13:45",
+            "minutes": 825,
+            "expected": 3,
+            "booked": 0,
+            "projected": 3,
+            "occupancyBp": 484
+          },
+          {
+            "slot": "14:00",
+            "minutes": 840,
+            "expected": 3,
+            "booked": 0,
+            "projected": 3,
+            "occupancyBp": 484
+          },
+          {
+            "slot": "14:15",
+            "minutes": 855,
+            "expected": 3,
+            "booked": 0,
+            "projected": 3,
+            "occupancyBp": 484
+          }
+        ],
+        "peak": "13:00"
+      }
+    ]
+  },
+  "panel": {
+    "from": "2026-11-03",
+    "to": "2026-11-10",
+    "total": {
+      "grossSalesCents": 52500,
+      "netSalesCents": 47726,
+      "refundCents": 0,
+      "discountCents": 0,
+      "bills": 7,
+      "guests": 21,
+      "averageTicketCents": 7500,
+      "averagePerGuestCents": 2500,
+      "rotationBp": 484,
+      "revenuePerSeatHourCents": 13,
+      "occupancyBp": 78,
+      "noShowBp": 0,
+      "noShows": 0,
+      "noShowCovers": 0
+    },
+    "comparison": {
+      "grossSalesCents": {
+        "current": 52500,
+        "previous": 50000,
+        "delta": 2500,
+        "deltaBp": 500
+      },
+      "netSalesCents": {
+        "current": 47726,
+        "previous": 45453,
+        "delta": 2273,
+        "deltaBp": 500
+      },
+      "refundCents": {
+        "current": 0,
+        "previous": 0,
+        "delta": 0,
+        "deltaBp": null
+      },
+      "discountCents": {
+        "current": 0,
+        "previous": 0,
+        "delta": 0,
+        "deltaBp": null
+      },
+      "bills": {
+        "current": 7,
+        "previous": 7,
+        "delta": 0,
+        "deltaBp": 0
+      },
+      "guests": {
+        "current": 21,
+        "previous": 20,
+        "delta": 1,
+        "deltaBp": 500
+      },
+      "averageTicketCents": {
+        "current": 7500,
+        "previous": 7143,
+        "delta": 357,
+        "deltaBp": 500
+      },
+      "averagePerGuestCents": {
+        "current": 2500,
+        "previous": 2500,
+        "delta": 0,
+        "deltaBp": 0
+      },
+      "rotationBp": {
+        "current": 484,
+        "previous": 538,
+        "delta": -54,
+        "deltaBp": -1004
+      },
+      "revenuePerSeatHourCents": {
+        "current": 13,
+        "previous": 15,
+        "delta": -2,
+        "deltaBp": -1333
+      },
+      "occupancyBp": {
+        "current": 78,
+        "previous": 88,
+        "delta": -10,
+        "deltaBp": -1136
+      },
+      "noShowBp": {
+        "current": 0,
+        "previous": 1250,
+        "delta": -1250,
+        "deltaBp": -10000
+      },
+      "noShows": {
+        "current": 0,
+        "previous": 1,
+        "delta": -1,
+        "deltaBp": -10000
+      },
+      "noShowCovers": {
+        "current": 0,
+        "previous": 4,
+        "delta": -4,
+        "deltaBp": -10000
+      }
+    },
+    "byLocation": [
+      {
+        "locationId": "centro",
+        "metrics": {
+          "grossSalesCents": 52500,
+          "netSalesCents": 47726,
+          "refundCents": 0,
+          "discountCents": 0,
+          "bills": 7,
+          "guests": 21,
+          "averageTicketCents": 7500,
+          "averagePerGuestCents": 2500,
+          "rotationBp": 484,
+          "revenuePerSeatHourCents": 13,
+          "occupancyBp": 78,
+          "noShowBp": 0,
+          "noShows": 0,
+          "noShowCovers": 0
+        },
+        "salesShareBp": 10000
+      }
+    ],
+    "byDay": [
+      {
+        "date": "2026-11-03",
+        "metrics": {
+          "grossSalesCents": 7500,
+          "netSalesCents": 6818,
+          "refundCents": 0,
+          "discountCents": 0,
+          "bills": 1,
+          "guests": 3,
+          "averageTicketCents": 7500,
+          "averagePerGuestCents": 2500,
+          "rotationBp": 484,
+          "revenuePerSeatHourCents": 12,
+          "occupancyBp": 73,
+          "noShowBp": 0,
+          "noShows": 0,
+          "noShowCovers": 0
+        }
+      },
+      {
+        "date": "2026-11-04",
+        "metrics": {
+          "grossSalesCents": 5000,
+          "netSalesCents": 4545,
+          "refundCents": 0,
+          "discountCents": 0,
+          "bills": 1,
+          "guests": 2,
+          "averageTicketCents": 5000,
+          "averagePerGuestCents": 2500,
+          "rotationBp": 323,
+          "revenuePerSeatHourCents": 8,
+          "occupancyBp": 48,
+          "noShowBp": 0,
+          "noShows": 0,
+          "noShowCovers": 0
+        }
+      },
+      {
+        "date": "2026-11-05",
+        "metrics": {
+          "grossSalesCents": 10000,
+          "netSalesCents": 9091,
+          "refundCents": 0,
+          "discountCents": 0,
+          "bills": 1,
+          "guests": 4,
+          "averageTicketCents": 10000,
+          "averagePerGuestCents": 2500,
+          "rotationBp": 645,
+          "revenuePerSeatHourCents": 16,
+          "occupancyBp": 97,
+          "noShowBp": 0,
+          "noShows": 0,
+          "noShowCovers": 0
+        }
+      },
+      {
+        "date": "2026-11-06",
+        "metrics": {
+          "grossSalesCents": 7500,
+          "netSalesCents": 6818,
+          "refundCents": 0,
+          "discountCents": 0,
+          "bills": 1,
+          "guests": 3,
+          "averageTicketCents": 7500,
+          "averagePerGuestCents": 2500,
+          "rotationBp": 484,
+          "revenuePerSeatHourCents": 12,
+          "occupancyBp": 73,
+          "noShowBp": 0,
+          "noShows": 0,
+          "noShowCovers": 0
+        }
+      },
+      {
+        "date": "2026-11-07",
+        "metrics": {
+          "grossSalesCents": 5000,
+          "netSalesCents": 4545,
+          "refundCents": 0,
+          "discountCents": 0,
+          "bills": 1,
+          "guests": 2,
+          "averageTicketCents": 5000,
+          "averagePerGuestCents": 2500,
+          "rotationBp": 323,
+          "revenuePerSeatHourCents": 8,
+          "occupancyBp": 48,
+          "noShowBp": 0,
+          "noShows": 0,
+          "noShowCovers": 0
+        }
+      },
+      {
+        "date": "2026-11-08",
+        "metrics": {
+          "grossSalesCents": 10000,
+          "netSalesCents": 9091,
+          "refundCents": 0,
+          "discountCents": 0,
+          "bills": 1,
+          "guests": 4,
+          "averageTicketCents": 10000,
+          "averagePerGuestCents": 2500,
+          "rotationBp": 645,
+          "revenuePerSeatHourCents": 32,
+          "occupancyBp": 194,
+          "noShowBp": 0,
+          "noShows": 0,
+          "noShowCovers": 0
+        }
+      },
+      {
+        "date": "2026-11-09",
+        "metrics": {
+          "grossSalesCents": 7500,
+          "netSalesCents": 6818,
+          "refundCents": 0,
+          "discountCents": 0,
+          "bills": 1,
+          "guests": 3,
+          "averageTicketCents": 7500,
+          "averagePerGuestCents": 2500,
+          "rotationBp": null,
+          "revenuePerSeatHourCents": null,
+          "occupancyBp": null,
+          "noShowBp": 0,
+          "noShows": 0,
+          "noShowCovers": 0
+        }
+      },
+      {
+        "date": "2026-11-10",
+        "metrics": {
+          "grossSalesCents": 0,
+          "netSalesCents": 0,
+          "refundCents": 0,
+          "discountCents": 0,
+          "bills": 0,
+          "guests": 0,
+          "averageTicketCents": null,
+          "averagePerGuestCents": null,
+          "rotationBp": 0,
+          "revenuePerSeatHourCents": 0,
+          "occupancyBp": 0,
+          "noShowBp": 0,
+          "noShows": 0,
+          "noShowCovers": 0
+        }
+      }
+    ],
+    "hours": {
+      "slots": [
+        {
+          "slot": "13:00",
+          "guests": 21,
+          "bills": 7,
+          "salesCents": 52500,
+          "reservations": 23,
+          "reservationCovers": 75
+        },
+        {
+          "slot": "14:00",
+          "guests": 0,
+          "bills": 0,
+          "salesCents": 0,
+          "reservations": 3,
+          "reservationCovers": 6
+        },
+        {
+          "slot": "15:00",
+          "guests": 0,
+          "bills": 0,
+          "salesCents": 0,
+          "reservations": 4,
+          "reservationCovers": 10
+        },
+        {
+          "slot": "20:00",
+          "guests": 0,
+          "bills": 0,
+          "salesCents": 0,
+          "reservations": 15,
+          "reservationCovers": 37
+        },
+        {
+          "slot": "21:00",
+          "guests": 0,
+          "bills": 0,
+          "salesCents": 0,
+          "reservations": 2,
+          "reservationCovers": 4
+        },
+        {
+          "slot": "22:00",
+          "guests": 0,
+          "bills": 0,
+          "salesCents": 0,
+          "reservations": 5,
+          "reservationCovers": 14
+        }
+      ],
+      "peak": "13:00"
+    },
+    "dishes": {
+      "top": [],
+      "bottom": [],
+      "zeroSales": [
+        {
+          "itemId": "agua",
+          "name": "Agua mineral"
+        },
+        {
+          "itemId": "cana",
+          "name": "Cerveza"
+        },
+        {
+          "itemId": "crema",
+          "name": "Crema catalana"
+        },
+        {
+          "itemId": "croquetas",
+          "name": "Croquetas de jamón"
+        },
+        {
+          "itemId": "ensalada",
+          "name": "Ensalada de tomate y burrata"
+        },
+        {
+          "itemId": "entrecot",
+          "name": "Entrecot de ternera"
+        },
+        {
+          "itemId": "hamburguesa",
+          "name": "Hamburguesa Lumbre"
+        },
+        {
+          "itemId": "lubina",
+          "name": "Lubina a la brasa"
+        },
+        {
+          "itemId": "bravas",
+          "name": "Patatas bravas"
+        },
+        {
+          "itemId": "pollo",
+          "name": "Pollo asado"
+        },
+        {
+          "itemId": "sopa",
+          "name": "Sopa de galets"
+        },
+        {
+          "itemId": "tarta",
+          "name": "Tarta de queso"
+        },
+        {
+          "itemId": "vino",
+          "name": "Vino tinto de la casa"
+        }
+      ]
+    },
+    "margin": {
+      "netCents": 0,
+      "coveredNetCents": 0,
+      "costCents": 0,
+      "marginCents": 0,
+      "marginBp": null,
+      "coverageBp": null,
+      "wasteCostCents": 0
+    },
+    "computedAt": 1794305991080
+  }
+}

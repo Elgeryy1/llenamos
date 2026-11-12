@@ -1,0 +1,41 @@
+# Preparación del servidor SQL. No habilitar tráfico productivo hasta migrar todos los módulos.
+services:
+  # La web lee en el servidor (páginas públicas /r/...) a través de la API interna; sin esto responde «no encontramos».
+  web:
+    environment:
+      API_INTERNAL_ORIGIN: http://api:3100
+  api:
+    image: ${API_IMAGE:?Imagen API versionada obligatoria}
+    profiles: [vps-backend]
+    restart: unless-stopped
+    init: true
+    mem_limit: 192m
+    cpus: 0.75
+    environment:
+      NODE_ENV: production
+      NODE_OPTIONS: --max-old-space-size=144
+      FIREBASE_PROJECT_ID: llenamos-logiqd
+      DATABASE_URL_FILE: /run/secrets/api_database_url
+      PORT: 3100
+      # El gateway (nginx) escribe X-Real-IP con la IP real del visitante; solo se acepta de su IP fija.
+      TRUSTED_IP_HEADER: x-real-ip
+      TRUSTED_PROXY_ADDRESSES: 172.30.43.3
+    secrets: [api_database_url]
+    networks: [application, database, api_egress]
+    depends_on:
+      postgres: {condition: service_healthy}
+    security_opt: [no-new-privileges:true]
+    cap_drop: [ALL]
+    healthcheck:
+      test: [CMD, node, -e, "fetch('http://127.0.0.1:3100/readyz').then(r=>process.exit(r.ok?0:1)).catch(()=>process.exit(1))"]
+      interval: 30s
+      timeout: 10s
+      start_period: 30s
+    logging:
+      driver: json-file
+      options: {max-size: 10m, max-file: '3'}
+networks:
+  api_egress:
+secrets:
+  api_database_url:
+    file: ${API_DATABASE_URL_FILE:-./secrets/api_database_url}

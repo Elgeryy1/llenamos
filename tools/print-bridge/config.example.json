@@ -1,0 +1,11 @@
+{
+  "functionsUrl": "http://127.0.0.1:5012/demo-llenamos/europe-west1",
+  "restaurantId": "demo-lumbre",
+  "locationId": "centro",
+  "bridgeId": "mostrador",
+  "token": "COPIA_AQUI_LA_CREDENCIAL_MOSTRADA_EN_EL_PANEL",
+  "journalDir": "./diario",
+  "printers": {
+    "ID_DE_LA_IMPRESORA": { "host": "192.168.1.50", "port": 9100 }
+  }
+}

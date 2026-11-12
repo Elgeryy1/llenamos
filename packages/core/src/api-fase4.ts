@@ -1,0 +1,7 @@
+/** Callables de la fase 4 (personal, inventario y costes), juntas para registrarlas en `api.ts`. */
+import { CALLABLES_FASE4_INVENTARIO, CALLABLE_SCHEMAS_FASE4_INVENTARIO, FASE4_INVENTARIO_ACCESS } from "./api-inventario"
+import { CALLABLES_FASE4_PERSONAL, CALLABLE_SCHEMAS_FASE4_PERSONAL, FASE4_PERSONAL_ACCESS } from "./api-personal"
+
+export const CALLABLES_FASE4 = { ...CALLABLES_FASE4_PERSONAL, ...CALLABLES_FASE4_INVENTARIO } as const
+export const CALLABLE_SCHEMAS_FASE4 = { ...CALLABLE_SCHEMAS_FASE4_PERSONAL, ...CALLABLE_SCHEMAS_FASE4_INVENTARIO } as const
+export const FASE4_ACCESS = { ...FASE4_PERSONAL_ACCESS, ...FASE4_INVENTARIO_ACCESS } as const

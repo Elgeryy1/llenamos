@@ -1,0 +1,599 @@
+{
+  "project": "demo-llenamos",
+  "scale": 2,
+  "captures": [
+    "01-reserva-sentada",
+    "02-pedido-retenido",
+    "03-cocina-marchada",
+    "04-cocina-lista",
+    "05-invitacion-y-anulacion",
+    "06-partes-iguales",
+    "07-reparto-por-platos",
+    "08-efectivo-cambio-propina",
+    "09-factura-completa",
+    "10-tarjeta-externa",
+    "11-mesa-enlace-cuenta",
+    "12-partes-en-el-movil",
+    "13-propina-consentimiento-sin-claves",
+    "14-pago-movil-confirmado",
+    "15-recibo-privado",
+    "16-permisos-camarero",
+    "17-rectificativa",
+    "18-servicio-cerrado",
+    "19-impresion-confirmada",
+    "20-arqueo-sin-diferencia",
+    "21-arqueo-movil",
+    "22-plan-sin-caja"
+  ],
+  "browserErrors": [],
+  "tcpJobs": 8,
+  "cashExpectedCents": 10625,
+  "differenceCents": 0,
+  "evidence": [
+    {
+      "operation": "guardarConfiguracionSala",
+      "http": 200,
+      "response": {
+        "result": {
+          "ok": true
+        }
+      }
+    },
+    {
+      "operation": "guardarConfiguracionCaja",
+      "http": 200,
+      "response": {
+        "result": {
+          "ok": true
+        }
+      }
+    },
+    {
+      "operation": "vincularPuente",
+      "http": 200,
+      "response": {
+        "result": {}
+      }
+    },
+    {
+      "operation": "guardarImpresora",
+      "http": 200,
+      "response": {
+        "result": {
+          "printerId": "2vCGfVURKjQNh8rc5BEz"
+        }
+      }
+    },
+    {
+      "operation": "crearReserva",
+      "http": 200,
+      "response": {
+        "result": {
+          "reservationId": "1tpTdHu3XJ6PeJSOPOMB",
+          "reference": "64GZEW",
+          "status": "confirmed",
+          "startAt": 1794257700000,
+          "tableIds": [
+            "fase3-1794257736289"
+          ],
+          "suggestedTableIds": [
+            "fase3-1794257736289"
+          ]
+        }
+      }
+    },
+    {
+      "operation": "cambiarEstadoReserva",
+      "http": 200,
+      "response": {
+        "result": {
+          "ok": true,
+          "status": "seated"
+        }
+      }
+    },
+    {
+      "operation": "enviarPedido",
+      "via": "formulario",
+      "http": 200,
+      "response": {
+        "result": {
+          "status": "sent",
+          "orderId": "jo4rTuGxMopPWQEPJNoc",
+          "lineIds": [
+            "1zlGkc2RhRVx9rpuMX9b",
+            "chej3MD44Bws17pFMic5",
+            "D25rpAf6TqudDTYBmDhV"
+          ],
+          "totalCents": 2250,
+          "sessionTotalCents": 2250,
+          "fired": 1,
+          "held": 2
+        }
+      }
+    },
+    {
+      "operation": "marcharPase",
+      "via": "formulario",
+      "http": 200,
+      "response": {
+        "result": {
+          "ok": true,
+          "course": "all",
+          "lineIds": [
+            "1zlGkc2RhRVx9rpuMX9b",
+            "chej3MD44Bws17pFMic5"
+          ]
+        }
+      }
+    },
+    {
+      "operation": "cambiarEstadoLineas",
+      "http": 200,
+      "response": {
+        "result": {
+          "ok": true,
+          "lines": [
+            {
+              "id": "1zlGkc2RhRVx9rpuMX9b",
+              "status": "served"
+            },
+            {
+              "id": "chej3MD44Bws17pFMic5",
+              "status": "served"
+            },
+            {
+              "id": "D25rpAf6TqudDTYBmDhV",
+              "status": "served"
+            }
+          ],
+          "firedNext": []
+        }
+      }
+    },
+    {
+      "operation": "cambiarEstadoMesa",
+      "http": 200,
+      "response": {
+        "result": {
+          "ok": true,
+          "status": "bill_requested",
+          "totalCents": 2250
+        }
+      }
+    },
+    {
+      "operation": "abrirCuenta",
+      "http": 200,
+      "response": {
+        "result": {
+          "billId": "Gc2akt0Gi7uc1h5jEJcF",
+          "bill": {
+            "target": {
+              "kind": "session",
+              "id": "Fj4gJMclcG7BzrG7Yc7h"
+            },
+            "customerId": "7633965b0335543beb7b",
+            "status": "open",
+            "revision": 1,
+            "lines": [
+              {
+                "lineId": "1zlGkc2RhRVx9rpuMX9b",
+                "parentLineId": null,
+                "name": "Patatas bravas",
+                "quantity": 1,
+                "grossCents": 650,
+                "taxRate": 10,
+                "guest": null
+              },
+              {
+                "lineId": "D25rpAf6TqudDTYBmDhV",
+                "parentLineId": null,
+                "name": "Agua mineral",
+                "quantity": 1,
+                "grossCents": 200,
+                "taxRate": 10,
+                "guest": null
+              },
+              {
+                "lineId": "chej3MD44Bws17pFMic5",
+                "parentLineId": null,
+                "name": "Hamburguesa Lumbre",
+                "quantity": 1,
+                "grossCents": 1400,
+                "taxRate": 10,
+                "guest": null
+              }
+            ],
+            "adjustments": [],
+            "totalCents": 2250,
+            "paidCents": 0,
+            "refundedCents": 0,
+            "openedAt": 1794257780251,
+            "lockedAt": null,
+            "settledAt": null
+          }
+        }
+      }
+    },
+    {
+      "operation": "ajustarCuenta",
+      "via": "formulario",
+      "http": 200,
+      "response": {
+        "result": {
+          "ok": true,
+          "revision": 2,
+          "totalCents": 2200
+        }
+      }
+    },
+    {
+      "operation": "ajustarCuenta",
+      "via": "formulario",
+      "http": 200,
+      "response": {
+        "result": {
+          "ok": true,
+          "revision": 3,
+          "totalCents": 2175
+        }
+      }
+    },
+    {
+      "operation": "dividirCuenta",
+      "via": "formulario",
+      "http": 200,
+      "response": {
+        "result": {
+          "revision": 4,
+          "parts": [
+            {
+              "billId": "Gc2akt0Gi7uc1h5jEJcF",
+              "label": "Parte 1",
+              "revision": 4,
+              "allocations": [
+                {
+                  "lineId": "1zlGkc2RhRVx9rpuMX9b",
+                  "amountCents": 192
+                },
+                {
+                  "lineId": "D25rpAf6TqudDTYBmDhV",
+                  "amountCents": 67
+                },
+                {
+                  "lineId": "chej3MD44Bws17pFMic5",
+                  "amountCents": 466
+                }
+              ],
+              "totalCents": 725,
+              "paidCents": 0,
+              "invoiceId": null,
+              "id": "mvxuVRjZuRDy1aAgBi5x"
+            },
+            {
+              "billId": "Gc2akt0Gi7uc1h5jEJcF",
+              "label": "Parte 2",
+              "revision": 4,
+              "allocations": [
+                {
+                  "lineId": "1zlGkc2RhRVx9rpuMX9b",
+                  "amountCents": 192
+                },
+                {
+                  "lineId": "D25rpAf6TqudDTYBmDhV",
+                  "amountCents": 66
+                },
+                {
+                  "lineId": "chej3MD44Bws17pFMic5",
+                  "amountCents": 467
+                }
+              ],
+              "totalCents": 725,
+              "paidCents": 0,
+              "invoiceId": null,
+              "id": "V06MqFZinI56Cp4koR4S"
+            },
+            {
+              "billId": "Gc2akt0Gi7uc1h5jEJcF",
+              "label": "Parte 3",
+              "revision": 4,
+              "allocations": [
+                {
+                  "lineId": "1zlGkc2RhRVx9rpuMX9b",
+                  "amountCents": 191
+                },
+                {
+                  "lineId": "D25rpAf6TqudDTYBmDhV",
+                  "amountCents": 67
+                },
+                {
+                  "lineId": "chej3MD44Bws17pFMic5",
+                  "amountCents": 467
+                }
+              ],
+              "totalCents": 725,
+              "paidCents": 0,
+              "invoiceId": null,
+              "id": "CWRgdLVvi75S0CaGUOlD"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "operation": "dividirCuenta",
+      "via": "formulario",
+      "http": 200,
+      "response": {
+        "result": {
+          "revision": 5,
+          "parts": [
+            {
+              "billId": "Gc2akt0Gi7uc1h5jEJcF",
+              "label": "Parte 1",
+              "revision": 5,
+              "allocations": [
+                {
+                  "lineId": "1zlGkc2RhRVx9rpuMX9b",
+                  "amountCents": 575
+                }
+              ],
+              "totalCents": 575,
+              "paidCents": 0,
+              "invoiceId": null,
+              "id": "tJqRUQQYPT8Y7jIUWG41"
+            },
+            {
+              "billId": "Gc2akt0Gi7uc1h5jEJcF",
+              "label": "Parte 2",
+              "revision": 5,
+              "allocations": [
+                {
+                  "lineId": "chej3MD44Bws17pFMic5",
+                  "amountCents": 1400
+                }
+              ],
+              "totalCents": 1400,
+              "paidCents": 0,
+              "invoiceId": null,
+              "id": "nHdKcCqlAm7h0gcO3PEV"
+            },
+            {
+              "billId": "Gc2akt0Gi7uc1h5jEJcF",
+              "label": "Parte 3",
+              "revision": 5,
+              "allocations": [
+                {
+                  "lineId": "D25rpAf6TqudDTYBmDhV",
+                  "amountCents": 200
+                }
+              ],
+              "totalCents": 200,
+              "paidCents": 0,
+              "invoiceId": null,
+              "id": "7Sy5pdqXMkE8AN8iBIZZ"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "operation": "prepararCobro",
+      "via": "formulario",
+      "http": 200,
+      "response": {
+        "result": {
+          "ok": true,
+          "revision": 6
+        }
+      }
+    },
+    {
+      "operation": "cambiarEstadoMesa",
+      "http": 400,
+      "response": {
+        "error": {
+          "message": "Salda la cuenta antes de cerrar la mesa.",
+          "status": "FAILED_PRECONDITION"
+        }
+      }
+    },
+    {
+      "operation": "registrarCobro",
+      "via": "formulario",
+      "http": 200,
+      "response": {
+        "result": {
+          "paymentId": "CtbHnbocXlWv5QphrxBC",
+          "changeCents": 375,
+          "dueCents": 0
+        }
+      }
+    },
+    {
+      "operation": "registrarCobro",
+      "http": 200,
+      "response": {
+        "result": {
+          "paymentId": "CtbHnbocXlWv5QphrxBC",
+          "changeCents": 375,
+          "dueCents": 0
+        }
+      }
+    },
+    {
+      "operation": "emitirFactura",
+      "via": "formulario",
+      "http": 200,
+      "response": {
+        "result": {
+          "invoiceId": "t0VY9RPU6p3bccN6ntcS",
+          "recordId": "BiupieiENhKGAVhHkBV5",
+          "number": "L9A7C318A774DE59DFA70/2026/F/000002",
+          "fiscalStatus": "queued",
+          "warning": "no válido para Hacienda"
+        }
+      }
+    },
+    {
+      "operation": "registrarCobro",
+      "via": "formulario",
+      "http": 200,
+      "response": {
+        "result": {
+          "paymentId": "SHbr0VUNeDZuHmXd8VWS",
+          "changeCents": 0,
+          "dueCents": 0
+        }
+      }
+    },
+    {
+      "operation": "crearEnlaceCobro",
+      "via": "formulario",
+      "http": 200,
+      "response": {
+        "result": {
+          "checkoutId": "xwLOWpWS9HQxCbsN0fro",
+          "expiresAt": 1794258699485
+        }
+      }
+    },
+    {
+      "operation": "regenerarQrMesa",
+      "http": 200,
+      "response": {
+        "result": {}
+      }
+    },
+    {
+      "operation": "registrarCobro",
+      "http": 400,
+      "response": {
+        "error": {
+          "message": "El importe supera el saldo disponible.",
+          "status": "FAILED_PRECONDITION"
+        }
+      }
+    },
+    {
+      "operation": "stripeCuentaWebhook",
+      "signature": "mala",
+      "http": 400
+    },
+    {
+      "operation": "stripeCuentaWebhook",
+      "signature": "caducada",
+      "http": 400
+    },
+    {
+      "operation": "stripeCuentaWebhook",
+      "signature": "buena",
+      "http": 200
+    },
+    {
+      "operation": "stripeCuentaWebhook",
+      "signature": "repetida",
+      "http": 200
+    },
+    {
+      "operation": "rectificarFactura",
+      "http": 403,
+      "response": {
+        "error": {
+          "message": "No tienes permiso para esta operación en este local.",
+          "status": "PERMISSION_DENIED"
+        }
+      }
+    },
+    {
+      "operation": "cerrarCaja",
+      "http": 403,
+      "response": {
+        "error": {
+          "message": "No tienes permiso para esta operación en este local.",
+          "status": "PERMISSION_DENIED"
+        }
+      }
+    },
+    {
+      "operation": "registrarCobro",
+      "http": 200,
+      "response": {
+        "result": {
+          "paymentId": "SHbr0VUNeDZuHmXd8VWS",
+          "changeCents": 0,
+          "dueCents": 0
+        }
+      }
+    },
+    {
+      "operation": "rectificarFactura",
+      "via": "formulario",
+      "http": 200,
+      "response": {
+        "result": {
+          "invoiceId": "pBEmHg2OHk9iJWXcRS7r",
+          "recordId": "zPz75CAlFaGyhONuxIyN",
+          "number": "L9A7C318A774DE59DFA70/2026/R/000001",
+          "fiscalStatus": "queued",
+          "warning": "no válido para Hacienda"
+        }
+      }
+    },
+    {
+      "operation": "devolverCobro",
+      "http": 200,
+      "response": {
+        "result": {
+          "refundId": "95YErKTmpkMFZxtRI7gv",
+          "status": "succeeded"
+        }
+      }
+    },
+    {
+      "operation": "cambiarEstadoMesa",
+      "http": 200,
+      "response": {
+        "result": {
+          "ok": true,
+          "status": "closed",
+          "totalCents": 2250
+        }
+      }
+    },
+    {
+      "operation": "cerrarCaja",
+      "via": "formulario",
+      "http": 200,
+      "response": {
+        "result": {
+          "ok": true,
+          "cashSession": {
+            "registerId": "principal",
+            "status": "closed",
+            "openingCents": 10000,
+            "openedAt": 1794257705907,
+            "openedBy": "lumbre-propietario",
+            "closedAt": 1794257840271,
+            "closedBy": "lumbre-propietario",
+            "countedCents": 10625,
+            "expectedCents": 10625,
+            "differenceCents": 0,
+            "closeReason": null
+          }
+        }
+      }
+    },
+    {
+      "operation": "abrirCuenta",
+      "http": 400,
+      "response": {
+        "error": {
+          "message": "El módulo necesario está desactivado.",
+          "status": "FAILED_PRECONDITION"
+        }
+      }
+    }
+  ]
+}

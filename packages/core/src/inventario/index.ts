@@ -1,0 +1,11 @@
+/** Inventario y costes (fase 4): unidades, existencias, escandallos, consumo, recuento y compras. */
+export * from "./unidades"
+export * from "./coste"
+export * from "./modelo"
+export * from "./recetas"
+export * from "./consumo"
+export * from "./recuento"
+export * from "./avisos"
+export * from "./margenes"
+export * from "./compras"
+export * from "./vivo"

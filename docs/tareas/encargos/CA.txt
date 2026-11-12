@@ -1,0 +1,10 @@
+Eres el agente 1 de Llenamos (fila 1: Auth 9102, Firestore 8096, Functions 5012, Storage 9212, UI 4011, Hub 4411, Logging 4511, Eventarc 9311, Tasks 9511, web 3011). Rama fase2/completar-sala. Carpeta de capturas: completar-sala. La fase 2 (sala y cocina) está en main y probada de punta a punta (docs/diseno/capturas/fase2/README.md). Contrato: sección «Fase 2 · Sala y cocina» de ARQUITECTURA.md. Se ha comparado con RestaurantOS, el sistema anterior: lee docs/tareas/comparativa-restaurantos.md (apartado 23 y las entradas que cita por su id). Cierra estas prioridades con el resultado concreto que pide esa tabla. Otros dos agentes hacen el resto a la vez: no toques sus pantallas. Backend (functions/src/fase2), reglas y packages/core sí, con cambios mínimos y aditivos; actualiza ARQUITECTURA.md y lista cada cambio de contrato en el informe. Capturas en docs/diseno/capturas/<tu carpeta>/.
+Tus prioridades:
+- 2 · Borrador persistente del comandero (sobrevive a recargar y cambiar de vista, por persona y mesa) e idempotencia del envío (clave estable por envío; si se pierde la respuesta no se crea dos veces y se recupera el resultado; revisión si cambian destino o precios). También en el pedido por QR (Q11).
+- 4 · Estados del servicio en el plano de Sala: llamada, pendiente de aprobación, preparando, listo para servir, cuenta pedida y tiempo sentados, con prioridad clara.
+- 5 · Recogida útil en sala: la tarea muestra cantidades, platos, variantes, extras y notas; orden de urgencia claro; comportamiento explícito si llega otra bandeja a una tarea ya cogida.
+- 7 · Agilidad del comandero: plato sin opciones obligatorias con un toque y sumar repetidos; acceso claro a opciones, nota y comensal; repetir ronda si cabe.
+- 12 · Política horaria del pedido por QR (configurable, validada en el servidor) y bandeja general de comandas por canal, estado y fecha.
+- 13 · Llamar al camarero con motivo (agua, cubiertos, servilletas, quiero pedir) y nota, sin una tarea nueva por cada toque.
+- Además: los platos que solo existen dentro del menú del día salen a 0,00 € en el comandero; arréglalo.
+Los otros dos: cocina y barra; carta pública, QR y para llevar.

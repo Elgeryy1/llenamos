@@ -1,0 +1,16 @@
+# Alta/aceptación y custodia del VPS. Añadir sólo cuando existan los archivos privados reales.
+# Sin este override la API permite las lecturas migradas, pero no las altas/invitaciones.
+services:
+  api:
+    environment:
+      IDENTITY_ADMIN_CREDENTIAL_FILE: /run/secrets/firebase_auth_admin
+      PLATFORM_INVITATION_KEY_FILE: /run/secrets/platform_invitation_key
+      PLATFORM_INTEGRATION_KEY_FILE: /run/secrets/platform_integration_key
+    secrets: [firebase_auth_admin, platform_invitation_key, platform_integration_key]
+secrets:
+  firebase_auth_admin:
+    file: ${FIREBASE_AUTH_ADMIN_FILE:-./secrets/firebase_auth_admin.json}
+  platform_invitation_key:
+    file: ${PLATFORM_INVITATION_KEY_FILE:-./secrets/platform_invitation_key}
+  platform_integration_key:
+    file: ${PLATFORM_INTEGRATION_KEY_FILE:-./secrets/platform_integration_key}

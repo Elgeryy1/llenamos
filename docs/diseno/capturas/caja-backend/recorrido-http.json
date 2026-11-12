@@ -1,0 +1,484 @@
+{
+  "at": "2026-11-09T19:01:43.775Z",
+  "warning": "no válido para Hacienda",
+  "billStatus": "settled",
+  "totalCents": 1225,
+  "paidCents": 1225,
+  "refundedCents": 100,
+  "changeCents": 250,
+  "competing": [
+    "rejected",
+    "fulfilled"
+  ],
+  "cash": {
+    "registerId": "principal",
+    "status": "closed",
+    "openingCents": 10000,
+    "openedAt": 1794250886011,
+    "openedBy": "lumbre-propietario",
+    "closedAt": 1794250902954,
+    "closedBy": "lumbre-propietario",
+    "countedCents": 10975,
+    "expectedCents": 10975,
+    "differenceCents": 0,
+    "closeReason": null
+  },
+  "refundStatus": "succeeded",
+  "invoiceNumbers": [
+    "L9A7C318A774DE59DFA70/2026/F/000003",
+    "L9A7C318A774DE59DFA70/2026/F/000004",
+    "L9A7C318A774DE59DFA70/2026/R/000002"
+  ],
+  "tips": [
+    {
+      "uid": "lumbre-camarero",
+      "minutes": 120,
+      "amountCents": 33
+    },
+    {
+      "uid": "lumbre-propietario",
+      "minutes": 60,
+      "amountCents": 17
+    }
+  ],
+  "evidence": [
+    {
+      "operation": "abrirMesa",
+      "status": 200,
+      "result": {
+        "sessionId": "d5yZludOGvVP0HTtZnaM",
+        "label": "Prueba caja",
+        "joinable": true,
+        "reservationSeated": false
+      }
+    },
+    {
+      "operation": "enviarPedido",
+      "status": 200,
+      "result": {
+        "status": "sent",
+        "orderId": "pcAOsDuhKSEGszPeUlbs",
+        "lineIds": [
+          "zladhQpG4oZxCWEROhwP"
+        ],
+        "totalCents": 1300,
+        "sessionTotalCents": 1300,
+        "fired": 1,
+        "held": 0
+      }
+    },
+    {
+      "operation": "abrirCuenta",
+      "status": 200,
+      "result": {
+        "billId": "IHMHqLQZNjqaoVlqsZjm",
+        "bill": {
+          "target": {
+            "kind": "session",
+            "id": "d5yZludOGvVP0HTtZnaM"
+          },
+          "customerId": null,
+          "status": "open",
+          "revision": 1,
+          "lines": [
+            {
+              "lineId": "zladhQpG4oZxCWEROhwP",
+              "parentLineId": null,
+              "name": "Patatas bravas",
+              "quantity": 2,
+              "grossCents": 1300,
+              "taxRate": 10,
+              "guest": null
+            }
+          ],
+          "adjustments": [],
+          "totalCents": 1300,
+          "paidCents": 0,
+          "refundedCents": 0,
+          "openedAt": 1794250889446,
+          "lockedAt": null,
+          "settledAt": null
+        }
+      }
+    },
+    {
+      "operation": "ajustarCuenta",
+      "status": 200,
+      "result": {
+        "ok": true,
+        "revision": 2,
+        "totalCents": 1250
+      }
+    },
+    {
+      "operation": "ajustarCuenta",
+      "status": 200,
+      "result": {
+        "ok": true,
+        "revision": 3,
+        "totalCents": 1225
+      }
+    },
+    {
+      "operation": "dividirCuenta",
+      "status": 200,
+      "result": {
+        "revision": 4,
+        "parts": [
+          {
+            "billId": "IHMHqLQZNjqaoVlqsZjm",
+            "label": "Parte 1",
+            "revision": 4,
+            "allocations": [
+              {
+                "lineId": "zladhQpG4oZxCWEROhwP",
+                "amountCents": 409
+              }
+            ],
+            "totalCents": 409,
+            "paidCents": 0,
+            "invoiceId": null,
+            "id": "azFJgAtatj5Rz00yDhbb"
+          },
+          {
+            "billId": "IHMHqLQZNjqaoVlqsZjm",
+            "label": "Parte 2",
+            "revision": 4,
+            "allocations": [
+              {
+                "lineId": "zladhQpG4oZxCWEROhwP",
+                "amountCents": 408
+              }
+            ],
+            "totalCents": 408,
+            "paidCents": 0,
+            "invoiceId": null,
+            "id": "txnO3Ff8oluegiR56DXO"
+          },
+          {
+            "billId": "IHMHqLQZNjqaoVlqsZjm",
+            "label": "Parte 3",
+            "revision": 4,
+            "allocations": [
+              {
+                "lineId": "zladhQpG4oZxCWEROhwP",
+                "amountCents": 408
+              }
+            ],
+            "totalCents": 408,
+            "paidCents": 0,
+            "invoiceId": null,
+            "id": "Vr96zc63LwqScqp05CR2"
+          }
+        ]
+      }
+    },
+    {
+      "operation": "dividirCuenta",
+      "status": 200,
+      "result": {
+        "revision": 5,
+        "parts": [
+          {
+            "billId": "IHMHqLQZNjqaoVlqsZjm",
+            "label": "Cuenta completa",
+            "revision": 5,
+            "allocations": [
+              {
+                "lineId": "zladhQpG4oZxCWEROhwP",
+                "amountCents": 1225
+              }
+            ],
+            "totalCents": 1225,
+            "paidCents": 0,
+            "invoiceId": null,
+            "id": "yjVUYHfRwy3mkf5VO77X"
+          }
+        ]
+      }
+    },
+    {
+      "operation": "dividirCuenta",
+      "status": 200,
+      "result": {
+        "revision": 6,
+        "parts": [
+          {
+            "billId": "IHMHqLQZNjqaoVlqsZjm",
+            "label": "Parte 1",
+            "revision": 6,
+            "allocations": [
+              {
+                "lineId": "zladhQpG4oZxCWEROhwP",
+                "amountCents": 500
+              }
+            ],
+            "totalCents": 500,
+            "paidCents": 0,
+            "invoiceId": null,
+            "id": "utX5CcTm4sO2R5F5FKqR"
+          },
+          {
+            "billId": "IHMHqLQZNjqaoVlqsZjm",
+            "label": "Parte 2",
+            "revision": 6,
+            "allocations": [
+              {
+                "lineId": "zladhQpG4oZxCWEROhwP",
+                "amountCents": 725
+              }
+            ],
+            "totalCents": 725,
+            "paidCents": 0,
+            "invoiceId": null,
+            "id": "zNr8rxf7EQIJae5cGHjM"
+          }
+        ]
+      }
+    },
+    {
+      "operation": "prepararCobro",
+      "status": 200,
+      "result": {
+        "ok": true,
+        "revision": 7
+      }
+    },
+    {
+      "operation": "cambiarEstadoLineas",
+      "status": 200,
+      "result": {
+        "ok": true,
+        "lines": [
+          {
+            "id": "zladhQpG4oZxCWEROhwP",
+            "status": "served"
+          }
+        ],
+        "firedNext": []
+      }
+    },
+    {
+      "operation": "registrarCobro",
+      "status": 200,
+      "result": {
+        "paymentId": "yxOXeWeg8kwq9vEQLa1e",
+        "changeCents": 250,
+        "dueCents": 300
+      }
+    },
+    {
+      "operation": "registrarCobro",
+      "status": 200,
+      "result": {
+        "paymentId": "yxOXeWeg8kwq9vEQLa1e",
+        "changeCents": 250,
+        "dueCents": 300
+      }
+    },
+    {
+      "operation": "registrarCobro",
+      "status": 200,
+      "result": {
+        "paymentId": "Wf2kQV5rriU6Hdpag8jz",
+        "changeCents": 0,
+        "dueCents": 0
+      }
+    },
+    {
+      "operation": "registrarCobro",
+      "status": 200,
+      "result": {
+        "paymentId": "ZYE8rDMSX88GRCHAhcl6",
+        "changeCents": 0,
+        "dueCents": 0
+      }
+    },
+    {
+      "operation": "registrarCobro",
+      "status": 400,
+      "result": {
+        "message": "La parte no pertenece a esta cuenta bloqueada y revisión.",
+        "status": "FAILED_PRECONDITION"
+      }
+    },
+    {
+      "operation": "emitirFactura",
+      "status": 200,
+      "result": {
+        "invoiceId": "U4eOWg8ApCyEtbfkPBcL",
+        "recordId": "EqwGTiOrG06IeocxhzDA",
+        "number": "L9A7C318A774DE59DFA70/2026/F/000003",
+        "fiscalStatus": "queued",
+        "warning": "no válido para Hacienda"
+      }
+    },
+    {
+      "operation": "emitirFactura",
+      "status": 200,
+      "result": {
+        "invoiceId": "p7Wy9MPubbiwyNyo05vM",
+        "recordId": "DGyAG0e0LFNkj7csyVpC",
+        "number": "L9A7C318A774DE59DFA70/2026/F/000004",
+        "fiscalStatus": "queued",
+        "warning": "no válido para Hacienda"
+      }
+    },
+    {
+      "operation": "devolverCobro",
+      "status": 200,
+      "result": {
+        "refundId": "8UkXVwyKyB2VUJgudYnm",
+        "status": "succeeded"
+      }
+    },
+    {
+      "operation": "rectificarFactura",
+      "status": 200,
+      "result": {
+        "invoiceId": "16aazJEZj7wLIbRlNRhs",
+        "recordId": "3aPDGXtxwz0XVoMJpnVh",
+        "number": "L9A7C318A774DE59DFA70/2026/R/000002",
+        "fiscalStatus": "queued",
+        "warning": "no válido para Hacienda"
+      }
+    },
+    {
+      "operation": "registrarMovimientoCaja",
+      "status": 200,
+      "result": {
+        "movementId": "gtWYJcYzVWQybsjRFzr9"
+      }
+    },
+    {
+      "operation": "registrarMovimientoCaja",
+      "status": 200,
+      "result": {
+        "movementId": "TlOYKF7JOVtMHDERbpjr"
+      }
+    },
+    {
+      "operation": "verCuenta",
+      "status": 200,
+      "result": {
+        "bill": {
+          "target": {
+            "kind": "session",
+            "id": "d5yZludOGvVP0HTtZnaM"
+          },
+          "customerId": null,
+          "status": "settled",
+          "revision": 7,
+          "lines": [
+            {
+              "lineId": "zladhQpG4oZxCWEROhwP",
+              "parentLineId": null,
+              "name": "Patatas bravas",
+              "quantity": 2,
+              "grossCents": 1300,
+              "taxRate": 10,
+              "guest": null
+            }
+          ],
+          "adjustments": [
+            {
+              "id": "aPKlAgauM8ABoc6japms",
+              "lineId": "zladhQpG4oZxCWEROhwP",
+              "kind": "invitation",
+              "amountCents": 50,
+              "reason": "Invitación de prueba local",
+              "at": 1794250889609,
+              "by": "lumbre-propietario"
+            },
+            {
+              "id": "GXdekcfC7hrkwalWCyHG",
+              "lineId": "zladhQpG4oZxCWEROhwP",
+              "kind": "void",
+              "amountCents": 25,
+              "reason": "Corrección de prueba local",
+              "at": 1794250889763,
+              "by": "lumbre-propietario"
+            }
+          ],
+          "totalCents": 1225,
+          "paidCents": 1225,
+          "refundedCents": 100,
+          "openedAt": 1794250889446,
+          "lockedAt": 1794250890410,
+          "settledAt": 1794250896171
+        },
+        "parts": [
+          {
+            "billId": "IHMHqLQZNjqaoVlqsZjm",
+            "label": "Parte 1",
+            "revision": 7,
+            "allocations": [
+              {
+                "lineId": "zladhQpG4oZxCWEROhwP",
+                "amountCents": 500
+              }
+            ],
+            "totalCents": 500,
+            "paidCents": 500,
+            "invoiceId": "U4eOWg8ApCyEtbfkPBcL",
+            "id": "utX5CcTm4sO2R5F5FKqR"
+          },
+          {
+            "billId": "IHMHqLQZNjqaoVlqsZjm",
+            "label": "Parte 2",
+            "revision": 7,
+            "allocations": [
+              {
+                "lineId": "zladhQpG4oZxCWEROhwP",
+                "amountCents": 725
+              }
+            ],
+            "totalCents": 725,
+            "paidCents": 725,
+            "invoiceId": "p7Wy9MPubbiwyNyo05vM",
+            "id": "zNr8rxf7EQIJae5cGHjM"
+          }
+        ]
+      }
+    },
+    {
+      "operation": "cerrarCaja",
+      "status": 200,
+      "result": {
+        "ok": true,
+        "cashSession": {
+          "registerId": "principal",
+          "status": "closed",
+          "openingCents": 10000,
+          "openedAt": 1794250886011,
+          "openedBy": "lumbre-propietario",
+          "closedAt": 1794250902954,
+          "closedBy": "lumbre-propietario",
+          "countedCents": 10975,
+          "expectedCents": 10975,
+          "differenceCents": 0,
+          "closeReason": null
+        }
+      }
+    },
+    {
+      "operation": "repartirPropinas",
+      "status": 200,
+      "result": {
+        "distributionId": "hKvk8zWzqSkHnacXQULs",
+        "shares": [
+          {
+            "uid": "lumbre-camarero",
+            "minutes": 120,
+            "amountCents": 33
+          },
+          {
+            "uid": "lumbre-propietario",
+            "minutes": 60,
+            "amountCents": 17
+          }
+        ]
+      }
+    }
+  ]
+}

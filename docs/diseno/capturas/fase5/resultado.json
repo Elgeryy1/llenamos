@@ -1,0 +1,666 @@
+{
+  "fidelizacion": {
+    "earned": 58,
+    "redeemed": 30,
+    "refundPoints": -10,
+    "stampsAfterSeatedAndPaid": 1,
+    "promotionDiscountCents": 650
+  },
+  "marketing": {
+    "recipients": 1,
+    "excludedWithoutConsent": 2,
+    "captured": 1,
+    "pendingCancelled": true
+  },
+  "analisis": {
+    "grossSalesCents": 36300,
+    "margin": {
+      "netCents": 35454,
+      "coveredNetCents": 35454,
+      "costCents": 5094,
+      "marginCents": 30360,
+      "marginBp": 8563,
+      "coverageBp": 10000,
+      "wasteCostCents": 0
+    },
+    "comparison": {
+      "grossSalesCents": {
+        "current": 36300,
+        "previous": 7500,
+        "delta": 28800,
+        "deltaBp": 38400
+      },
+      "netSalesCents": {
+        "current": 30273,
+        "previous": 6818,
+        "delta": 23455,
+        "deltaBp": 34402
+      },
+      "refundCents": {
+        "current": 3000,
+        "previous": 0,
+        "delta": 3000,
+        "deltaBp": null
+      },
+      "discountCents": {
+        "current": 2700,
+        "previous": 0,
+        "delta": 2700,
+        "deltaBp": null
+      },
+      "bills": {
+        "current": 6,
+        "previous": 1,
+        "delta": 5,
+        "deltaBp": 50000
+      },
+      "guests": {
+        "current": 12,
+        "previous": 3,
+        "delta": 9,
+        "deltaBp": 30000
+      },
+      "averageTicketCents": {
+        "current": 6050,
+        "previous": 7500,
+        "delta": -1450,
+        "deltaBp": -1933
+      },
+      "averagePerGuestCents": {
+        "current": 3025,
+        "previous": 2500,
+        "delta": 525,
+        "deltaBp": 2100
+      },
+      "rotationBp": {
+        "current": 1765,
+        "previous": 441,
+        "delta": 1324,
+        "deltaBp": 30023
+      },
+      "revenuePerSeatHourCents": {
+        "current": 21,
+        "previous": 4,
+        "delta": 17,
+        "deltaBp": 42500
+      },
+      "occupancyBp": {
+        "current": 0,
+        "previous": 25,
+        "delta": -25,
+        "deltaBp": -10000
+      },
+      "noShowBp": {
+        "current": 256,
+        "previous": 0,
+        "delta": 256,
+        "deltaBp": null
+      },
+      "noShows": {
+        "current": 1,
+        "previous": 0,
+        "delta": 1,
+        "deltaBp": null
+      },
+      "noShowCovers": {
+        "current": 2,
+        "previous": 0,
+        "delta": 2,
+        "deltaBp": null
+      }
+    },
+    "origin": [
+      {
+        "channel": "campaign",
+        "campaignId": "D4VwbBPS1lEG8ERSdoyH",
+        "adId": null,
+        "reservations": 1,
+        "covers": 2,
+        "seated": 1,
+        "noShows": 0,
+        "cancelled": 0,
+        "salesCents": 4850
+      }
+    ]
+  },
+  "forecast": [
+    {
+      "date": "2026-11-11",
+      "samples": 11,
+      "sampleDates": [
+        "2026-11-04",
+        "2026-10-28",
+        "2026-10-21",
+        "2026-10-14",
+        "2026-10-07",
+        "2026-09-30",
+        "2026-09-23",
+        "2026-09-09",
+        "2026-09-02",
+        "2026-08-26",
+        "2026-08-19"
+      ],
+      "confidence": "medium",
+      "volatile": true,
+      "slots": [
+        {
+          "slot": "13:00",
+          "minutes": 780,
+          "expected": 3,
+          "booked": 0,
+          "projected": 3,
+          "occupancyBp": 441
+        },
+        {
+          "slot": "13:15",
+          "minutes": 795,
+          "expected": 3,
+          "booked": 0,
+          "projected": 3,
+          "occupancyBp": 441
+        },
+        {
+          "slot": "13:30",
+          "minutes": 810,
+          "expected": 3,
+          "booked": 2,
+          "projected": 3,
+          "occupancyBp": 441
+        },
+        {
+          "slot": "13:45",
+          "minutes": 825,
+          "expected": 3,
+          "booked": 2,
+          "projected": 3,
+          "occupancyBp": 441
+        },
+        {
+          "slot": "14:00",
+          "minutes": 840,
+          "expected": 3,
+          "booked": 2,
+          "projected": 3,
+          "occupancyBp": 441
+        },
+        {
+          "slot": "14:15",
+          "minutes": 855,
+          "expected": 3,
+          "booked": 2,
+          "projected": 3,
+          "occupancyBp": 441
+        },
+        {
+          "slot": "14:30",
+          "minutes": 870,
+          "expected": 0,
+          "booked": 2,
+          "projected": 2,
+          "occupancyBp": 294
+        },
+        {
+          "slot": "14:45",
+          "minutes": 885,
+          "expected": 0,
+          "booked": 2,
+          "projected": 2,
+          "occupancyBp": 294
+        }
+      ],
+      "peak": "13:00"
+    },
+    {
+      "date": "2026-11-12",
+      "samples": 11,
+      "sampleDates": [
+        "2026-11-05",
+        "2026-10-29",
+        "2026-10-22",
+        "2026-10-15",
+        "2026-10-01",
+        "2026-09-24",
+        "2026-09-17",
+        "2026-09-10",
+        "2026-09-03",
+        "2026-08-27",
+        "2026-08-20"
+      ],
+      "confidence": "medium",
+      "volatile": true,
+      "slots": [
+        {
+          "slot": "13:00",
+          "minutes": 780,
+          "expected": 3,
+          "booked": 0,
+          "projected": 3,
+          "occupancyBp": 441
+        },
+        {
+          "slot": "13:15",
+          "minutes": 795,
+          "expected": 3,
+          "booked": 0,
+          "projected": 3,
+          "occupancyBp": 441
+        },
+        {
+          "slot": "13:30",
+          "minutes": 810,
+          "expected": 3,
+          "booked": 0,
+          "projected": 3,
+          "occupancyBp": 441
+        },
+        {
+          "slot": "13:45",
+          "minutes": 825,
+          "expected": 3,
+          "booked": 0,
+          "projected": 3,
+          "occupancyBp": 441
+        },
+        {
+          "slot": "14:00",
+          "minutes": 840,
+          "expected": 3,
+          "booked": 0,
+          "projected": 3,
+          "occupancyBp": 441
+        },
+        {
+          "slot": "14:15",
+          "minutes": 855,
+          "expected": 3,
+          "booked": 0,
+          "projected": 3,
+          "occupancyBp": 441
+        }
+      ],
+      "peak": "13:00"
+    },
+    {
+      "date": "2026-11-13",
+      "samples": 11,
+      "sampleDates": [
+        "2026-11-06",
+        "2026-10-23",
+        "2026-10-16",
+        "2026-10-09",
+        "2026-10-02",
+        "2026-09-25",
+        "2026-09-18",
+        "2026-09-11",
+        "2026-09-04",
+        "2026-08-28",
+        "2026-08-21"
+      ],
+      "confidence": "medium",
+      "volatile": true,
+      "slots": [
+        {
+          "slot": "13:00",
+          "minutes": 780,
+          "expected": 3,
+          "booked": 0,
+          "projected": 3,
+          "occupancyBp": 441
+        },
+        {
+          "slot": "13:15",
+          "minutes": 795,
+          "expected": 3,
+          "booked": 0,
+          "projected": 3,
+          "occupancyBp": 441
+        },
+        {
+          "slot": "13:30",
+          "minutes": 810,
+          "expected": 3,
+          "booked": 0,
+          "projected": 3,
+          "occupancyBp": 441
+        },
+        {
+          "slot": "13:45",
+          "minutes": 825,
+          "expected": 3,
+          "booked": 0,
+          "projected": 3,
+          "occupancyBp": 441
+        },
+        {
+          "slot": "14:00",
+          "minutes": 840,
+          "expected": 3,
+          "booked": 0,
+          "projected": 3,
+          "occupancyBp": 441
+        },
+        {
+          "slot": "14:15",
+          "minutes": 855,
+          "expected": 3,
+          "booked": 0,
+          "projected": 3,
+          "occupancyBp": 441
+        }
+      ],
+      "peak": "13:00"
+    },
+    {
+      "date": "2026-11-14",
+      "samples": 11,
+      "sampleDates": [
+        "2026-11-07",
+        "2026-10-31",
+        "2026-10-24",
+        "2026-10-17",
+        "2026-10-10",
+        "2026-10-03",
+        "2026-09-26",
+        "2026-09-19",
+        "2026-09-12",
+        "2026-08-29",
+        "2026-08-22"
+      ],
+      "confidence": "medium",
+      "volatile": true,
+      "slots": [
+        {
+          "slot": "13:00",
+          "minutes": 780,
+          "expected": 3,
+          "booked": 0,
+          "projected": 3,
+          "occupancyBp": 441
+        },
+        {
+          "slot": "13:15",
+          "minutes": 795,
+          "expected": 3,
+          "booked": 0,
+          "projected": 3,
+          "occupancyBp": 441
+        },
+        {
+          "slot": "13:30",
+          "minutes": 810,
+          "expected": 3,
+          "booked": 0,
+          "projected": 3,
+          "occupancyBp": 441
+        },
+        {
+          "slot": "13:45",
+          "minutes": 825,
+          "expected": 3,
+          "booked": 0,
+          "projected": 3,
+          "occupancyBp": 441
+        },
+        {
+          "slot": "14:00",
+          "minutes": 840,
+          "expected": 3,
+          "booked": 0,
+          "projected": 3,
+          "occupancyBp": 441
+        },
+        {
+          "slot": "14:15",
+          "minutes": 855,
+          "expected": 3,
+          "booked": 0,
+          "projected": 3,
+          "occupancyBp": 441
+        }
+      ],
+      "peak": "13:00"
+    },
+    {
+      "date": "2026-11-15",
+      "samples": 11,
+      "sampleDates": [
+        "2026-11-08",
+        "2026-11-01",
+        "2026-10-25",
+        "2026-10-18",
+        "2026-10-11",
+        "2026-10-04",
+        "2026-09-20",
+        "2026-09-13",
+        "2026-09-06",
+        "2026-08-30",
+        "2026-08-23"
+      ],
+      "confidence": "medium",
+      "volatile": true,
+      "slots": [
+        {
+          "slot": "13:00",
+          "minutes": 780,
+          "expected": 3,
+          "booked": 0,
+          "projected": 3,
+          "occupancyBp": 441
+        },
+        {
+          "slot": "13:15",
+          "minutes": 795,
+          "expected": 3,
+          "booked": 0,
+          "projected": 3,
+          "occupancyBp": 441
+        },
+        {
+          "slot": "13:30",
+          "minutes": 810,
+          "expected": 3,
+          "booked": 0,
+          "projected": 3,
+          "occupancyBp": 441
+        },
+        {
+          "slot": "13:45",
+          "minutes": 825,
+          "expected": 3,
+          "booked": 0,
+          "projected": 3,
+          "occupancyBp": 441
+        },
+        {
+          "slot": "14:00",
+          "minutes": 840,
+          "expected": 3,
+          "booked": 0,
+          "projected": 3,
+          "occupancyBp": 441
+        },
+        {
+          "slot": "14:15",
+          "minutes": 855,
+          "expected": 3,
+          "booked": 0,
+          "projected": 3,
+          "occupancyBp": 441
+        }
+      ],
+      "peak": "13:00"
+    },
+    {
+      "date": "2026-11-16",
+      "samples": 11,
+      "sampleDates": [
+        "2026-11-09",
+        "2026-11-02",
+        "2026-10-26",
+        "2026-10-12",
+        "2026-10-05",
+        "2026-09-28",
+        "2026-09-21",
+        "2026-09-14",
+        "2026-09-07",
+        "2026-08-31",
+        "2026-08-24"
+      ],
+      "confidence": "medium",
+      "volatile": true,
+      "slots": [
+        {
+          "slot": "13:00",
+          "minutes": 780,
+          "expected": 3,
+          "booked": 0,
+          "projected": 3,
+          "occupancyBp": 441
+        },
+        {
+          "slot": "13:15",
+          "minutes": 795,
+          "expected": 3,
+          "booked": 0,
+          "projected": 3,
+          "occupancyBp": 441
+        },
+        {
+          "slot": "13:30",
+          "minutes": 810,
+          "expected": 3,
+          "booked": 0,
+          "projected": 3,
+          "occupancyBp": 441
+        },
+        {
+          "slot": "13:45",
+          "minutes": 825,
+          "expected": 3,
+          "booked": 0,
+          "projected": 3,
+          "occupancyBp": 441
+        },
+        {
+          "slot": "14:00",
+          "minutes": 840,
+          "expected": 3,
+          "booked": 0,
+          "projected": 3,
+          "occupancyBp": 441
+        },
+        {
+          "slot": "14:15",
+          "minutes": 855,
+          "expected": 3,
+          "booked": 0,
+          "projected": 3,
+          "occupancyBp": 441
+        }
+      ],
+      "peak": "13:00"
+    },
+    {
+      "date": "2026-11-17",
+      "samples": 10,
+      "sampleDates": [
+        "2026-11-03",
+        "2026-10-27",
+        "2026-10-20",
+        "2026-10-13",
+        "2026-10-06",
+        "2026-09-29",
+        "2026-09-22",
+        "2026-09-15",
+        "2026-09-08",
+        "2026-09-01"
+      ],
+      "confidence": "medium",
+      "volatile": true,
+      "slots": [
+        {
+          "slot": "13:00",
+          "minutes": 780,
+          "expected": 3,
+          "booked": 0,
+          "projected": 3,
+          "occupancyBp": 441
+        },
+        {
+          "slot": "13:15",
+          "minutes": 795,
+          "expected": 3,
+          "booked": 0,
+          "projected": 3,
+          "occupancyBp": 441
+        },
+        {
+          "slot": "13:30",
+          "minutes": 810,
+          "expected": 3,
+          "booked": 0,
+          "projected": 3,
+          "occupancyBp": 441
+        },
+        {
+          "slot": "13:45",
+          "minutes": 825,
+          "expected": 3,
+          "booked": 0,
+          "projected": 3,
+          "occupancyBp": 441
+        },
+        {
+          "slot": "14:00",
+          "minutes": 840,
+          "expected": 3,
+          "booked": 0,
+          "projected": 3,
+          "occupancyBp": 441
+        },
+        {
+          "slot": "14:15",
+          "minutes": 855,
+          "expected": 3,
+          "booked": 0,
+          "projected": 3,
+          "occupancyBp": 441
+        }
+      ],
+      "peak": "13:00"
+    }
+  ],
+  "automation": {
+    "recommendation": "dismissed",
+    "executed": false
+  },
+  "menu": {
+    "propietario": [
+      "/panel/fidelizacion",
+      "/panel/campanas",
+      "/panel/analisis"
+    ],
+    "encargada": [
+      "/panel/fidelizacion",
+      "/panel/campanas",
+      "/panel/analisis"
+    ],
+    "camarero": [],
+    "cocina": [],
+    "barra": [],
+    "sala": []
+  },
+  "privacy": {
+    "status": "completed",
+    "loyalty": "closed",
+    "repiteLinkDeleted": true,
+    "removalQueued": true
+  },
+  "widget": {
+    "source": "widget",
+    "campaignOrigin": true,
+    "parentHost": "localhost",
+    "whatsappConsent": true
+  },
+  "estado": "completado"
+}

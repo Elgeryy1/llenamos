@@ -1,0 +1,8 @@
+Fase 3 integrada, 9 de noviembre de 2026, fila 5, proyecto demo-llenamos. Proveedor fiscal de prueba: no válido para Hacienda.
+
+pnpm lint && pnpm typecheck && pnpm test: correcto (core 429, functions 87, web 494 pruebas unitarias).
+pnpm build: correcto.
+pnpm test:puente: 7 pruebas correctas.
+Integración de Functions con emuladores recién arrancados: 6 (reservas y actividad) y después 209, total 215 correctas, 11 antiguas R2 de otra fila omitidas.
+Reglas de Firestore y Storage: 98 pruebas correctas.
+pnpm e2e:fase3 sobre emuladores limpios con pnpm seed, seed:servicio y seed:caja: 22 capturas a 2x, 8 trabajos TCP, diferencia de arqueo cero, sin errores de página.

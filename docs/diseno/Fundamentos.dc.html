@@ -1,0 +1,133 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<title>Fundamentos de Llenamos</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600&amp;family=Geist+Mono:wght@400;500&amp;display=swap">
+<style>
+body{margin:0;background:#131209}
+a{color:#f0a35e}a:hover{color:#f6bd88}
+button{font:inherit;color:inherit}
+</style>
+</helmet>
+<div style="width: 1280px; height: 1000px; box-sizing: border-box; background: #131209; color: #f4f1ea; font-family: Geist, system-ui, sans-serif; font-size: 14px; line-height: 1.45; padding: 48px 56px; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); column-gap: 56px; row-gap: 40px; align-content: start">
+
+  <header style="grid-column: 1 / -1; display: flex; justify-content: space-between; align-items: flex-end; border-bottom: 1px solid rgba(244,241,234,0.08); padding-bottom: 20px">
+    <div style="display: flex; align-items: center; gap: 12px">
+      <svg width="30" height="30" viewBox="0 0 24 24" aria-hidden="true"><rect x="7" y="7" width="10" height="10" rx="2" fill="#f0a35e"></rect><rect x="9" y="2.5" width="6" height="2.5" rx="1.25" fill="#a39f95"></rect><rect x="9" y="19" width="6" height="2.5" rx="1.25" fill="#a39f95"></rect><rect x="2.5" y="9" width="2.5" height="6" rx="1.25" fill="#a39f95"></rect><rect x="19" y="9" width="2.5" height="6" rx="1.25" fill="#a39f95"></rect></svg>
+      <div style="display: flex; flex-direction: column">
+        <span style="font-size: 22px; font-weight: 600; letter-spacing: -0.02em">Fundamentos</span>
+        <span style="font-size: 13px; color: #a39f95">llenamos by LogiQD · interfaz del panel y página pública</span>
+      </div>
+    </div>
+    <span style="font-size: 13px; color: #a39f95; max-width: 420px; text-align: right">Herramienta de trabajo para un servicio con prisa: densa, tranquila y legible a un metro. El color solo dice estado o acción.</span>
+  </header>
+
+  <section aria-labelledby="f-color" style="display: flex; flex-direction: column; gap: 14px">
+    <h2 id="f-color" style="margin: 0; font-size: 13px; font-weight: 500; color: #a39f95">Color</h2>
+    <div style="display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 10px">
+      <sc-for list="{{colors}}" as="c" hint-placeholder-count="12">
+        <div style="display: flex; flex-direction: column; gap: 6px">
+          <span aria-hidden="true" style="height: 52px; border-radius: 8px; background: {{c.hex}}; border: 1px solid rgba(244,241,234,0.1)"></span>
+          <span style="font-size: 13px">{{c.name}}</span>
+          <span style="font-family: 'Geist Mono', monospace; font-size: 11.5px; color: #a39f95">{{c.hex}} · {{c.use}}</span>
+        </div>
+      </sc-for>
+    </div>
+  </section>
+
+  <section aria-labelledby="f-tipo" style="display: flex; flex-direction: column; gap: 14px">
+    <h2 id="f-tipo" style="margin: 0; font-size: 13px; font-weight: 500; color: #a39f95">Letra · Geist y Geist Mono</h2>
+    <div style="display: flex; flex-direction: column; border-top: 1px solid rgba(244,241,234,0.07)">
+      <div style="display: grid; grid-template-columns: 120px minmax(0, 1fr); align-items: baseline; padding: 10px 0; border-bottom: 1px solid rgba(244,241,234,0.07)"><span style="font-family: 'Geist Mono', monospace; font-size: 11.5px; color: #a39f95">26 · 600</span><span style="font-size: 26px; font-weight: 600; letter-spacing: -0.02em">64 cubiertos esta noche</span></div>
+      <div style="display: grid; grid-template-columns: 120px minmax(0, 1fr); align-items: baseline; padding: 10px 0; border-bottom: 1px solid rgba(244,241,234,0.07)"><span style="font-family: 'Geist Mono', monospace; font-size: 11.5px; color: #a39f95">18 · 600</span><span style="font-size: 18px; font-weight: 600; letter-spacing: -0.01em">Reservas</span></div>
+      <div style="display: grid; grid-template-columns: 120px minmax(0, 1fr); align-items: baseline; padding: 10px 0; border-bottom: 1px solid rgba(244,241,234,0.07)"><span style="font-family: 'Geist Mono', monospace; font-size: 11.5px; color: #a39f95">14 · 500</span><span style="font-size: 14px; font-weight: 500">Clara Ibáñez <span style="font-weight: 400; color: #d6d2c8">tiene alergia a frutos secos</span></span></div>
+      <div style="display: grid; grid-template-columns: 120px minmax(0, 1fr); align-items: baseline; padding: 10px 0; border-bottom: 1px solid rgba(244,241,234,0.07)"><span style="font-family: 'Geist Mono', monospace; font-size: 11.5px; color: #a39f95">12 · 400</span><span style="font-size: 12px; color: #a39f95">Etiquetas, ayudas y metadatos</span></div>
+      <div style="display: grid; grid-template-columns: 120px minmax(0, 1fr); align-items: baseline; padding: 10px 0; border-bottom: 1px solid rgba(244,241,234,0.07)"><span style="font-family: 'Geist Mono', monospace; font-size: 11.5px; color: #a39f95">Mono 13</span><span style="font-family: 'Geist Mono', monospace; font-size: 13px">20:30 · 4 pers. · S4 + S5 · K7Q2MD · 55 €</span></div>
+    </div>
+    <span style="font-size: 12.5px; color: #a39f95">Horas, mesas, personas, importes y referencias siempre en Mono: se alinean en columna y se leen de un vistazo.</span>
+  </section>
+
+  <section aria-labelledby="f-comp" style="display: flex; flex-direction: column; gap: 16px">
+    <h2 id="f-comp" style="margin: 0; font-size: 13px; font-weight: 500; color: #a39f95">Botones</h2>
+    <div style="display: flex; flex-wrap: wrap; gap: 10px; align-items: center">
+      <button type="button" style="height: 36px; padding: 0 14px; border-radius: 8px; border: 0; background: #f0a35e; color: #1a1408; font-weight: 600">Sentar en S7</button>
+      <button type="button" style="height: 36px; padding: 0 14px; border-radius: 8px; border: 1px solid rgba(244,241,234,0.12); background: #1f1f1f">Cambiar mesa</button>
+      <button type="button" style="height: 36px; padding: 0 14px; border-radius: 8px; border: 0; background: transparent; color: #a39f95">Ahora no</button>
+      <button type="button" style="height: 36px; padding: 0 14px; border-radius: 8px; border: 1px solid rgba(232,133,122,0.35); background: transparent; color: #e8857a">No se presentó</button>
+    </div>
+    <span style="font-size: 12.5px; color: #a39f95">Un solo botón ámbar por pantalla: la acción que toca ahora. Altura 36 en el panel, 48 en el móvil.</span>
+    <h2 style="margin: 8px 0 0; font-size: 13px; font-weight: 500; color: #a39f95">Estados de reserva</h2>
+    <div style="display: flex; flex-wrap: wrap; gap: 18px">
+      <sc-for list="{{states}}" as="s" hint-placeholder-count="5">
+        <span style="display: flex; align-items: center; gap: 8px; font-size: 13px; color: {{s.color}}"><span aria-hidden="true" style="width: 8px; height: 8px; border-radius: 50%; background: {{s.dot}}; box-shadow: inset 0 0 0 1.5px {{s.ring}}"></span>{{s.label}}</span>
+      </sc-for>
+    </div>
+    <h2 style="margin: 8px 0 0; font-size: 13px; font-weight: 500; color: #a39f95">Etiquetas</h2>
+    <div style="display: flex; flex-wrap: wrap; gap: 6px">
+      <span style="font-size: 11.5px; line-height: 18px; padding: 0 6px; border-radius: 4px; color: #f1a79e; background: rgba(232,133,122,0.12)">Alergia a frutos secos</span>
+      <span style="font-size: 11.5px; line-height: 18px; padding: 0 6px; border-radius: 4px; color: #a8d4b5; background: rgba(143,199,160,0.10)">Habitual</span>
+      <span style="font-size: 11.5px; line-height: 18px; padding: 0 6px; border-radius: 4px; color: #d6d2c8; background: rgba(244,241,234,0.07)">Señal 30 €</span>
+      <span style="font-size: 11.5px; line-height: 18px; padding: 0 6px; border-radius: 4px; color: #d6d2c8; background: rgba(244,241,234,0.07)">Cumpleaños</span>
+    </div>
+  </section>
+
+  <section aria-labelledby="f-reglas" style="display: flex; flex-direction: column; gap: 14px">
+    <h2 id="f-reglas" style="margin: 0; font-size: 13px; font-weight: 500; color: #a39f95">Reglas</h2>
+    <ol style="margin: 0; padding: 0; list-style: none; display: flex; flex-direction: column; border-top: 1px solid rgba(244,241,234,0.07)">
+      <sc-for list="{{rules}}" as="r" hint-placeholder-count="8">
+        <li style="display: grid; grid-template-columns: 28px minmax(0, 1fr); gap: 8px; padding: 9px 0; border-bottom: 1px solid rgba(244,241,234,0.07)">
+          <span style="font-family: 'Geist Mono', monospace; font-size: 12px; color: #a39f95; padding-top: 1px">{{r.n}}</span>
+          <span style="font-size: 13.5px">{{r.text}}</span>
+        </li>
+      </sc-for>
+    </ol>
+  </section>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":1280,"height":1000}}'>
+class Component extends DCLogic {
+  renderVals() {
+    const colors = [
+      { name: 'Fondo', hex: '#131209', use: 'página' },
+      { name: 'Panel lateral', hex: '#161512', use: 'detalle, plano' },
+      { name: 'Superficie', hex: '#181818', use: 'campos, tarjetas' },
+      { name: 'Superficie alta', hex: '#1f1f1f', use: 'botón, activo' },
+      { name: 'Texto', hex: '#f4f1ea', use: 'principal' },
+      { name: 'Texto suave', hex: '#d6d2c8', use: 'secundario' },
+      { name: 'Texto apagado', hex: '#a39f95', use: 'etiquetas' },
+      { name: 'Línea', hex: '#24231d', use: 'bordes 7 %' },
+      { name: 'Ámbar', hex: '#f0a35e', use: 'acción, ahora' },
+      { name: 'Verde', hex: '#8fc7a0', use: 'sentada, bien' },
+      { name: 'Rojo cálido', hex: '#e8857a', use: 'alergia, cancelar' },
+      { name: 'Ceniza', hex: '#5f5b53', use: 'terminada, cerrado' }
+    ];
+    const states = [
+      { label: 'Por llegar', color: '#d6d2c8', dot: 'transparent', ring: '#a39f95' },
+      { label: 'Retraso 12 min', color: '#f0a35e', dot: '#f0a35e', ring: '#f0a35e' },
+      { label: 'Sentada', color: '#8fc7a0', dot: '#8fc7a0', ring: '#8fc7a0' },
+      { label: 'Terminada', color: '#a39f95', dot: '#5f5b53', ring: '#5f5b53' },
+      { label: 'Cancelada', color: '#e8857a', dot: 'transparent', ring: '#e8857a' }
+    ];
+    const rules = [
+      'Bordes finos de 1 px al 7 % en vez de sombras. Sin degradados ni brillos.',
+      'Radios pequeños: 6 en controles, 8 en botones, 10 en bloques, 12 en el móvil.',
+      'Listas y tablas antes que tarjetas. Una fila por reserva, alineada en columnas.',
+      'El estado se dice con un punto y una palabra, nunca solo con color.',
+      'Títulos que cuentan algo: «64 cubiertos esta noche», no «Panel».',
+      'Frases en castellano llano, sin guiones dentro y sin mayúsculas en cada palabra.',
+      'Iconos de trazo fino de 16 px, solo donde ayudan a encontrar algo.',
+      'Movimiento corto con cubic-bezier(0.32, 0.72, 0, 1). Nada se anima por adorno.'
+    ].map((text, i) => ({ n: String(i + 1).padStart(2, '0'), text }));
+    return { colors, states, rules };
+  }
+}
+</script>
+</body>
+</html>

@@ -1,0 +1,44 @@
+{
+  "name": "llenamos",
+  "private": true,
+  "description": "Llenamos by LogiQD: sistema completo para restaurantes.",
+  "packageManager": "pnpm@12.10.1",
+  "engines": {
+    "node": ">=22"
+  },
+  "scripts": {
+    "emuladores": "firebase emulators:start --project demo-llenamos --import=.emuladores --export-on-exit=.emuladores",
+    "web": "pnpm --filter web dev",
+    "landing": "pnpm --filter landing dev",
+    "funciones:build": "pnpm --filter functions build",
+    "seed": "tsx scripts/seed.ts",
+    "seed:servicio": "tsx scripts/seed-servicio.ts",
+    "logiqd:equipo": "tsx scripts/logiqd-equipo.ts",
+    "lint": "pnpm -r lint",
+    "typecheck": "pnpm -r typecheck",
+    "test": "pnpm -r test",
+    "test:reglas": "firebase emulators:exec --project demo-llenamos --only firestore,storage \"vitest run --root tests/rules\"",
+    "build": "pnpm -r build",
+    "verificar": "pnpm lint && pnpm typecheck && pnpm test && pnpm test:reglas && pnpm build",
+    "mensajes:procesar": "tsx scripts/procesar-mensajes.ts",
+    "fixtures:xlsx": "tsx scripts/generar-xlsx-ejemplo.ts",
+    "e2e:lista-espera": "tsx scripts/e2e-lista-espera.ts",
+    "sala:procesar": "tsx scripts/procesar-recogidas.ts",
+    "seed:caja": "tsx scripts/seed-fase3.ts",
+    "impresion:puente": "node tools/print-bridge/bridge.mjs",
+    "impresion:reconciliar": "tsx scripts/impresion-reconciliar.ts",
+    "pago:procesar": "tsx scripts/pago-movil-procesar.ts",
+    "test:puente": "node --test tools/print-bridge/bridge.test.mjs",
+    "fase3:preparar": "node scripts/fase3-preparar-local.mjs",
+    "e2e:fase3": "tsx scripts/fase3-e2e.mjs"
+  },
+  "devDependencies": {
+    "@firebase/rules-unit-testing": "^6.0.0",
+    "firebase": "^13.2.0",
+    "firebase-admin": "^14.5.0",
+    "firebase-tools": "^15.35.0",
+    "tsx": "^4.23.15",
+    "typescript": "^5.9.3",
+    "vitest": "^5.1.0"
+  }
+}

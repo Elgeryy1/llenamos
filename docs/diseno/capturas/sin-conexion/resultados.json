@@ -1,0 +1,15 @@
+{
+  "results": [
+    "Comandero: corte real, guardado en IndexedDB, recarga sin red y reconexión crean una sola comanda.",
+    "Respuesta perdida después del commit: recupera el recibo y no duplica la segunda ronda.",
+    "Dos pestañas: secuencias distintas en una transacción IndexedDB, exclusión de envío y dos rondas encadenadas aplicadas una sola vez.",
+    "Dos tablets: el destino antiguo conserva un conflicto visible y no duplica el pedido.",
+    "Cocina: setOffline guarda el cambio local, reconectar lo aplica con el permiso de cocina.",
+    "Caja: efectivo guardado como anotación, ningún Payment durante el corte y tarjeta/fiscalidad bloqueadas.",
+    "Efectivo: conciliación manual online usa la clave estable y crea un solo Payment.",
+    "Salir bloquea la vista local y conserva las intenciones para su uid original."
+  ],
+  "deviceScaleFactor": 2,
+  "network": "BrowserContext.setOffline",
+  "project": "demo-llenamos"
+}

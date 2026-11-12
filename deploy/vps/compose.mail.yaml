@@ -1,0 +1,13 @@
+# Opcional. Sin este override las invitaciones permanecen pendientes e inactivas.
+# Requiere también compose.identity.yaml y remitente/plataforma de correo reales.
+services:
+  api:
+    environment:
+      PLATFORM_EMAIL_ENABLED: '1'
+      PUBLIC_APP_URL: ${PUBLIC_APP_URL:?Origen HTTPS de la aplicación obligatorio}
+      EMAIL_FROM: ${PLATFORM_EMAIL_FROM:?Remitente real del correo de plataforma obligatorio}
+      RESEND_API_KEY_FILE: /run/secrets/platform_resend_key
+    secrets: [platform_resend_key]
+secrets:
+  platform_resend_key:
+    file: ${PLATFORM_RESEND_KEY_FILE:-./secrets/platform_resend_key}

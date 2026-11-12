@@ -1,0 +1,9 @@
+{
+  "restaurantId": "alta_25b2082f841dd6f090ab44f91a583dd4",
+  "webhooksRecibidos": [
+    "reservation.created"
+  ],
+  "estadoFinal": "suspended",
+  "deviceScaleFactor": 2,
+  "browserErrors": []
+}

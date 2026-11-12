@@ -1,0 +1,85 @@
+name: llenamos
+services:
+  web:
+    image: ${WEB_IMAGE:?Imagen web versionada obligatoria}
+    restart: unless-stopped
+    init: true
+    mem_limit: 256m
+    cpus: 1.0
+    networks: [application]
+    environment:
+      NODE_ENV: production
+      NODE_OPTIONS: --max-old-space-size=160
+    security_opt: [no-new-privileges:true]
+    cap_drop: [ALL]
+    healthcheck:
+      test: [CMD, node, -e, "fetch('http://127.0.0.1:3000/entrar').then(r=>process.exit(r.ok?0:1)).catch(()=>process.exit(1))"]
+      interval: 30s
+      timeout: 10s
+      start_period: 60s
+    logging:
+      driver: json-file
+      options: {max-size: 10m, max-file: '3'}
+  gateway:
+    image: ${GATEWAY_IMAGE:?Imagen gateway versionada obligatoria}
+    restart: unless-stopped
+    mem_limit: 64m
+    cpus: 0.25
+    networks:
+      application:
+        # IP fija: la API solo confía en X-Real-IP si la conexión viene de esta dirección.
+        ipv4_address: 172.30.43.3
+      tunnel_edge:
+        ipv4_address: 172.30.42.3
+    depends_on:
+      web: {condition: service_healthy}
+    ports:
+      - 127.0.0.1:8180:8080
+      - 127.0.0.1:8181:8081
+    security_opt: [no-new-privileges:true]
+    cap_drop: [ALL]
+    healthcheck:
+      test: [CMD, wget, -q, -O, /dev/null, http://127.0.0.1:8080/healthz]
+      interval: 30s
+      timeout: 5s
+    logging:
+      driver: json-file
+      options: {max-size: 10m, max-file: '3'}
+  tunnel:
+    image: ${TUNNEL_IMAGE:?Imagen cloudflared fijada obligatoria}
+    restart: unless-stopped
+    profiles: [public]
+    command: [tunnel, --no-autoupdate, run, --token-file, /run/secrets/tunnel_token]
+    # Mismo uid que el dueño de ./secrets (modo 600), como las imágenes node; con su uid propio (65532) no puede leer el token.
+    user: "1000:1000"
+    secrets: [tunnel_token]
+    mem_limit: 64m
+    cpus: 0.25
+    networks:
+      tunnel_edge:
+        ipv4_address: 172.30.42.2
+    depends_on:
+      gateway: {condition: service_healthy}
+    security_opt: [no-new-privileges:true]
+    cap_drop: [ALL]
+    logging:
+      driver: json-file
+      options: {max-size: 10m, max-file: '3'}
+secrets:
+  tunnel_token:
+    file: ${TUNNEL_TOKEN_FILE:-./secrets/tunnel_token}
+networks:
+  application:
+    internal: true
+    ipam:
+      config:
+        - subnet: 172.30.43.0/28
+          # Las IP dinámicas salen de la mitad alta: la fija del gateway (.3, la única de confianza para X-Real-IP)
+          # nunca puede ser tomada antes por otro servicio (el ensayo la perdió contra identity).
+          ip_range: 172.30.43.8/29
+  tunnel_edge:
+    ipam:
+      config:
+        - subnet: 172.30.42.0/28
+          # IP fija del túnel (.2) protegida contra asignación dinámica por Docker.
+          ip_range: 172.30.42.8/29

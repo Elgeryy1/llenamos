@@ -1,0 +1,444 @@
+{
+  "proyecto": "demo-llenamos",
+  "escala": 2,
+  "capturas": [
+    {
+      "archivo": "01-menu-encargada",
+      "que": "Menú de encargada: solo lo que su rol puede usar de la fase 4"
+    },
+    {
+      "archivo": "01-menu-camarero",
+      "que": "Menú de camarero: solo lo que su rol puede usar de la fase 4"
+    },
+    {
+      "archivo": "01-menu-cocina",
+      "que": "Menú de cocina: solo lo que su rol puede usar de la fase 4"
+    },
+    {
+      "archivo": "02-cuadrante-esta-semana",
+      "que": "Cuadrante de la semana en curso, publicado: el turno de hoy del camarero ajustado por el encargado"
+    },
+    {
+      "archivo": "03-cuadrante-semana-siguiente-borrador",
+      "que": "La semana siguiente, todavía en borrador: nadie del equipo la ve"
+    },
+    {
+      "archivo": "04-cuadrante-semana-siguiente-publicada",
+      "que": "La semana siguiente publicada; el equipo ya la ve en su fichaje"
+    },
+    {
+      "archivo": "05-movil-antes-de-fichar",
+      "que": "El camarero en el móvil: ve su turno de hoy publicado y un único botón grande"
+    },
+    {
+      "archivo": "06-movil-trabajando",
+      "que": "Entrada fichada con la hora del servidor"
+    },
+    {
+      "archivo": "07-tableta-pin",
+      "que": "Puesto de tableta: la persona toca su nombre y escribe su PIN en el teclado grande"
+    },
+    {
+      "archivo": "08-tableta-nora-dentro",
+      "que": "Tras fichar, el puesto enseña quién está dentro en directo"
+    },
+    {
+      "archivo": "09-compras-sugerencia",
+      "que": "La sugerencia propone lo que falta (bacon bajo mínimo) y avisa de los ingredientes sin formato de proveedor"
+    },
+    {
+      "archivo": "10-compras-borrador-desde-sugerencia",
+      "que": "El borrador sale de la sugerencia; los precios los pone el servidor desde el formato guardado"
+    },
+    {
+      "archivo": "11-compras-confirmar-envio",
+      "que": "Llenamos no envía nada al proveedor: el encargado confirma que lo ha pedido él"
+    },
+    {
+      "archivo": "12-compras-recepcion-parcial",
+      "que": "Recepción parcial: llegan 2 de 3 bandejas de entrecot a 35,50 € (antes 34,00 €) y el aviso de cambio de precio sale al teclear"
+    },
+    {
+      "archivo": "13-compras-resultado",
+      "que": "Resultado del albarán: pedido recibido en parte, lo que falta y el cambio de precio con su variación"
+    },
+    {
+      "archivo": "14-sala-pedido-retenido",
+      "que": "Pedido de la mesa con comida retenida: todavía nada ha marchado y el almacén sigue igual"
+    },
+    {
+      "archivo": "15-inventario-movimientos",
+      "que": "El libro de movimientos (solo con permiso de costes): ventas, anulación y merma, cada una con su valor"
+    },
+    {
+      "archivo": "16-cocina-acceso-merma",
+      "que": "La pantalla de cocina ofrece \"Registrar merma\" junto a la estación, sin enseñar ningún coste"
+    },
+    {
+      "archivo": "17-cocina-merma-dialogo",
+      "que": "El mismo diálogo del inventario: ingrediente, cantidad, motivo y nota; solo cantidades, nunca importes"
+    },
+    {
+      "archivo": "18-cocina-merma-hecha",
+      "que": "Merma apuntada: confirmación con lo que queda, sin costes"
+    },
+    {
+      "archivo": "19-cocina-escandallos-sin-acceso",
+      "que": "Cocina no ve escandallos ni costes: el panel se lo dice"
+    },
+    {
+      "archivo": "20-barra-movil-acceso-merma",
+      "que": "En el móvil de la barra el acceso a la merma está a la vista"
+    },
+    {
+      "archivo": "21-barra-movil-merma-hecha",
+      "que": "Merma de 2 litros de cerveza desde el móvil de la barra"
+    },
+    {
+      "archivo": "22-recuento-inicio",
+      "que": "Empezar un recuento solo de la despensa: el servicio sigue abierto"
+    },
+    {
+      "archivo": "23-recuento-contando",
+      "que": "Cada cantidad se guarda con la hora a la que se contó: aceite 2,3 l y huevos 20"
+    },
+    {
+      "archivo": "24-recuento-reconciliacion",
+      "que": "La reconciliación descuenta lo vendido mientras se contaba: el aceite sale con −160 ml de diferencia y \"salieron 40 ml\" (sin la reconciliación saldría −120 ml y el aceite vendido parecería ajuste)"
+    },
+    {
+      "archivo": "25-recuento-aplicado",
+      "que": "Recuento aplicado: ajustes con su valor como movimiento de recuento"
+    },
+    {
+      "archivo": "26-inventario-avisos",
+      "que": "Existencias con avisos de stock bajo: huevos 20 ud frente a un mínimo de 30, sin importes para cocina y barra"
+    },
+    {
+      "archivo": "27-compras-sugerencia-huevos",
+      "que": "La sugerencia de pedido incluye los huevos: cubetas enteras hasta el objetivo"
+    },
+    {
+      "archivo": "28-escandallos-platos",
+      "que": "Escandallos: coste teórico y margen de cada plato con receta"
+    },
+    {
+      "archivo": "29-escandallos-margen-vendido",
+      "que": "Margen vendido: lo que costó de verdad lo ya servido, con el coste de ese momento (anulaciones aparte)"
+    },
+    {
+      "archivo": "30-movil-en-pausa",
+      "que": "En pausa: el tiempo de pausa no cuenta como trabajado"
+    },
+    {
+      "archivo": "31-movil-de-vuelta",
+      "que": "De vuelta de la pausa: vuelve a contar tiempo trabajado"
+    },
+    {
+      "archivo": "32-cuadrante-comparar-con-fichado",
+      "que": "El encargado compara lo planificado con lo fichado: el camarero y la barra entraron a su hora"
+    },
+    {
+      "archivo": "33-personal-hoy",
+      "que": "Personal hoy: quién está dentro, en pausa u olvidado, y los turnos de hoy frente a lo fichado"
+    },
+    {
+      "archivo": "34-caja-cobro-con-propina",
+      "que": "Cobro en efectivo de la mesa (15,00 €) con 2,00 € de propina: la propina entra en la caja para repartirla"
+    },
+    {
+      "archivo": "35-propinas-con-aviso-olvidado",
+      "que": "Propinas por horas: minutos precargados con lo fichado y aviso del fichaje olvidado, que no cuenta hasta cerrarlo"
+    },
+    {
+      "archivo": "36-horas-cerrar-olvidado",
+      "que": "Cerrar un fichaje olvidado: hora de salida explícita y motivo obligatorio, con la previsión de horas"
+    },
+    {
+      "archivo": "37-horas-olvidado-cerrado",
+      "que": "Hoja de horas tras cerrar el olvidado: queda con su historial y sin avisos pendientes"
+    },
+    {
+      "archivo": "38-propinas-por-horas",
+      "que": "Reparto de propinas con las horas fichadas reales de la caja (editables), sin avisos pendientes"
+    },
+    {
+      "archivo": "39-propinas-repartidas",
+      "que": "Reparto confirmado: cada persona con sus minutos y su importe; se guarda una sola vez por caja"
+    },
+    {
+      "archivo": "40-movil-confirmar-salida",
+      "que": "La salida pide confirmación para evitar toques por error"
+    },
+    {
+      "archivo": "41-movil-salida-hecha",
+      "que": "Jornada cerrada: horas trabajadas de la semana al día"
+    },
+    {
+      "archivo": "42-propinas-caja-sin-fichajes",
+      "que": "Una caja en la que nadie fichó: la pantalla lo dice y el reparto sigue siendo manual"
+    },
+    {
+      "archivo": "43-propinas-sin-modulo-personal",
+      "que": "Sin el módulo de personal no hay horas fichadas: lo dice y deja el reparto manual como en la fase 3"
+    },
+    {
+      "archivo": "44-plan-sala-menu-encargada",
+      "que": "Plan sala: el menú de la encargada no enseña nada de personal, inventario, escandallos ni compras"
+    },
+    {
+      "archivo": "45-plan-sala-cocina-sin-merma",
+      "que": "Plan sala: cocina funciona igual pero sin acceso a la merma"
+    },
+    {
+      "archivo": "46-plan-sala-inventario-apagado",
+      "que": "Plan sala: abrir el inventario a mano explica que el módulo no está activo en este plan"
+    }
+  ],
+  "comprobaciones": [
+    "El menú de encargada enseña fichaje, personal, inventario, escandallos, compras y nada más de la fase 4",
+    "El menú de camarero enseña fichaje y nada más de la fase 4",
+    "El menú de cocina enseña fichaje, inventario y nada más de la fase 4",
+    "El menú de barra enseña fichaje, inventario y nada más de la fase 4",
+    "El cuadrante queda publicado (38 turnos publicados en el local)",
+    "El fichaje del camarero queda abierto con la hora del servidor y sin horas inventadas por el móvil",
+    "La entrada de la barra en la tableta queda con origen \"kiosk\" y el encargado como autor",
+    "La recepción parcial deja el pedido \"recibido en parte\" y avisa del cambio de precio",
+    "El entrecot sube de 8000 g a 12000 g (2 bandejas de 2 kg)",
+    "El coste medio del entrecot se actualiza con el precio del albarán",
+    "Un pedido retenido (sin marchar) no toca el almacén",
+    "El pedido de la mesa se ha guardado con 3 líneas",
+    "Al marchar, el disparador real descuenta las recetas: patatas 55000 a 54528 g, carne 10000 a 9810 g, pan 40 a 39, agua 48 a 47",
+    "El descuento de las patatas coincide con lo apuntado en el libro de movimientos",
+    "Cada línea con receta guarda su coste y su precio de ese momento (lineCosts)",
+    "Anular la hamburguesa antes de prepararla devuelve carne, pan y patatas",
+    "La devolución queda como movimiento propio (3 apuntes de tipo anulación de venta)",
+    "El diálogo de merma de cocina no enseña ningún importe",
+    "La respuesta de registrarMerma no lleva valor ni coste",
+    "La merma resta del almacén: huevos 56 a 50",
+    "La pantalla de cocina no enseña ningún importe tras apuntar la merma",
+    "La encargada ve la merma de cocina con su valor en el libro de movimientos",
+    "La venta durante el conteo no se cuenta como pérdida: aceite 2460 ml, contado 2300 ml a las T1, vendido 40 ml después, queda 2260 ml",
+    "Los huevos se ajustan al contado (20) y el recuento queda aplicado",
+    "Se abre el aviso de stock bajo de los huevos (nivel low)",
+    "La sugerencia de pedido propone cubetas de huevos",
+    "La pausa queda en el fichaje abierto",
+    "El cobro con propina queda registrado por el servidor",
+    "La caja se cierra sin descuadre (esperado 11700 céntimos)",
+    "La pantalla de propinas avisa del fichaje olvidado de Lucía antes de repartir",
+    "El fichaje olvidado queda cerrado por el encargado y marcado para revisión",
+    "Cerrado el olvidado, el aviso desaparece de la pantalla de propinas",
+    "horasParaPropinas devuelve las horas fichadas reales: Diego Ríos 1 min (descontada la pausa y contando su fichaje abierto hasta el cierre) y Nora Costa 2 min",
+    "El formulario de la caja precarga los minutos fichados del camarero",
+    "El reparto suma exactamente la propina de la caja (200 céntimos entre 2 personas, por restos mayores)",
+    "La salida cierra el fichaje con 1 minutos trabajados (sin la pausa)",
+    "El fichaje del camarero queda cerrado con sus minutos y su pausa guardados",
+    "Una caja sin fichajes lo dice y deja el reparto manual",
+    "Sin el módulo de personal el reparto de propinas queda manual y no se pide ninguna hora",
+    "horasParaPropinas rechaza la llamada con el módulo de personal apagado",
+    "Con el plan sala, la pantalla de cocina no ofrece registrar merma",
+    "Con el plan sala ningún rol ve fichaje, personal, inventario, escandallos ni compras en el menú",
+    "Con el plan sala las funciones de la fase 4 rechazan la llamada (el servidor también lo impide)"
+  ],
+  "erroresDePagina": [],
+  "llamadas": [
+    {
+      "operacion": "guardarTurno",
+      "quien": "encargada",
+      "http": 200,
+      "estado": "OK"
+    },
+    {
+      "operacion": "publicarCuadrante",
+      "via": "pantalla",
+      "http": 200,
+      "estado": "OK"
+    },
+    {
+      "operacion": "fichar",
+      "via": "pantalla",
+      "http": 200,
+      "estado": "OK"
+    },
+    {
+      "operacion": "ficharEnPuesto",
+      "via": "pantalla",
+      "http": 200,
+      "estado": "OK"
+    },
+    {
+      "operacion": "guardarPedidoProveedor",
+      "via": "pantalla",
+      "http": 200,
+      "estado": "OK"
+    },
+    {
+      "operacion": "cambiarEstadoPedidoProveedor",
+      "via": "pantalla",
+      "http": 200,
+      "estado": "OK"
+    },
+    {
+      "operacion": "recibirPedidoProveedor",
+      "via": "pantalla",
+      "http": 200,
+      "estado": "OK"
+    },
+    {
+      "operacion": "crearReserva",
+      "quien": "propietario",
+      "http": 200,
+      "estado": "OK"
+    },
+    {
+      "operacion": "cambiarEstadoReserva",
+      "quien": "propietario",
+      "http": 200,
+      "estado": "OK"
+    },
+    {
+      "operacion": "sincronizarComando",
+      "via": "pantalla",
+      "http": 200,
+      "estado": "OK"
+    },
+    {
+      "operacion": "sincronizarComando",
+      "via": "pantalla",
+      "http": 200,
+      "estado": "OK"
+    },
+    {
+      "operacion": "cambiarEstadoLineas",
+      "quien": "propietario",
+      "http": 200,
+      "estado": "OK"
+    },
+    {
+      "operacion": "registrarMerma",
+      "via": "pantalla",
+      "http": 200,
+      "estado": "OK"
+    },
+    {
+      "operacion": "registrarMerma",
+      "via": "pantalla",
+      "http": 200,
+      "estado": "OK"
+    },
+    {
+      "operacion": "iniciarRecuento",
+      "via": "pantalla",
+      "http": 200,
+      "estado": "OK"
+    },
+    {
+      "operacion": "guardarRecuento",
+      "via": "pantalla",
+      "http": 200,
+      "estado": "OK"
+    },
+    {
+      "operacion": "sincronizarComando",
+      "via": "pantalla",
+      "http": 200,
+      "estado": "OK"
+    },
+    {
+      "operacion": "sincronizarComando",
+      "via": "pantalla",
+      "http": 200,
+      "estado": "OK"
+    },
+    {
+      "operacion": "aplicarRecuento",
+      "via": "pantalla",
+      "http": 200,
+      "estado": "OK"
+    },
+    {
+      "operacion": "fichar",
+      "via": "pantalla",
+      "http": 200,
+      "estado": "OK"
+    },
+    {
+      "operacion": "fichar",
+      "via": "pantalla",
+      "http": 200,
+      "estado": "OK"
+    },
+    {
+      "operacion": "prepararCobro",
+      "via": "pantalla",
+      "http": 200,
+      "estado": "OK"
+    },
+    {
+      "operacion": "registrarCobro",
+      "via": "pantalla",
+      "http": 200,
+      "estado": "OK"
+    },
+    {
+      "operacion": "cerrarCaja",
+      "via": "pantalla",
+      "http": 200,
+      "estado": "OK"
+    },
+    {
+      "operacion": "cerrarFichajeOlvidado",
+      "via": "pantalla",
+      "http": 200,
+      "estado": "OK"
+    },
+    {
+      "operacion": "horasParaPropinas",
+      "quien": "encargada",
+      "http": 200,
+      "estado": "OK"
+    },
+    {
+      "operacion": "repartirPropinas",
+      "via": "pantalla",
+      "http": 200,
+      "estado": "OK"
+    },
+    {
+      "operacion": "fichar",
+      "via": "pantalla",
+      "http": 200,
+      "estado": "OK"
+    },
+    {
+      "operacion": "abrirCaja",
+      "quien": "propietario",
+      "http": 200,
+      "estado": "OK"
+    },
+    {
+      "operacion": "cerrarCaja",
+      "quien": "propietario",
+      "http": 200,
+      "estado": "OK"
+    },
+    {
+      "operacion": "horasParaPropinas",
+      "quien": "propietario",
+      "http": 400,
+      "estado": "FAILED_PRECONDITION"
+    },
+    {
+      "operacion": "fichar",
+      "quien": "camarero",
+      "http": 400,
+      "estado": "FAILED_PRECONDITION"
+    },
+    {
+      "operacion": "registrarMerma",
+      "quien": "cocina",
+      "http": 400,
+      "estado": "FAILED_PRECONDITION"
+    }
+  ]
+}

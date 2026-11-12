@@ -1,0 +1,160 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<title>Inicio del servicio</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600&amp;family=Geist+Mono:wght@400;500&amp;display=swap">
+<style>
+body{margin:0;background:#131209}
+a{color:#f0a35e}a:hover{color:#f6bd88}
+button{font:inherit;color:inherit}
+button:focus-visible,a:focus-visible{outline:2px solid #f0a35e;outline-offset:2px}
+</style>
+</helmet>
+<div style="min-height: 100vh; display: flex; flex-wrap: wrap; background: #131209; color: #f4f1ea; font-family: Geist, system-ui, sans-serif; font-size: 14px; line-height: 1.45">
+
+  <nav aria-label="Panel" style="flex: 1 1 224px; box-sizing: border-box; padding: 16px 12px; display: flex; flex-direction: column; gap: 20px; border-right: 1px solid rgba(244,241,234,0.07)">
+    <div style="display: flex; align-items: center; gap: 10px; padding: 4px 8px">
+      <svg width="22" height="22" viewBox="0 0 24 24" aria-hidden="true"><rect x="7" y="7" width="10" height="10" rx="2" fill="#f0a35e"></rect><rect x="9" y="2.5" width="6" height="2.5" rx="1.25" fill="#a39f95"></rect><rect x="9" y="19" width="6" height="2.5" rx="1.25" fill="#a39f95"></rect><rect x="2.5" y="9" width="2.5" height="6" rx="1.25" fill="#a39f95"></rect><rect x="19" y="9" width="2.5" height="6" rx="1.25" fill="#a39f95"></rect></svg>
+      <span style="font-weight: 600; font-size: 15px; letter-spacing: -0.01em">llenamos</span>
+    </div>
+    <button type="button" style="display: flex; align-items: center; justify-content: space-between; gap: 8px; padding: 8px 10px; border-radius: 8px; border: 1px solid rgba(244,241,234,0.09); background: #181818; cursor: pointer; text-align: left">
+      <span style="display: flex; flex-direction: column; gap: 1px"><span style="font-weight: 500">Taberna Lumbre</span><span style="font-size: 12px; color: #a39f95">Plan sala · Gràcia</span></span>
+      <svg width="14" height="14" viewBox="0 0 16 16" fill="none" stroke="#a39f95" stroke-width="1.5" aria-hidden="true"><path d="M5 6l3-3 3 3M5 10l3 3 3-3"></path></svg>
+    </button>
+    <div style="display: flex; flex-direction: column; gap: 2px">
+      <a href="Inicio.dc.html" aria-current="page" style="display: flex; align-items: center; gap: 10px; padding: 7px 10px; border-radius: 6px; color: #f4f1ea; background: #1f1f1f; text-decoration: none"><svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M2.5 7L8 2.5 13.5 7v6.5h-11z"></path></svg>Inicio</a>
+      <a href="Main.dc.html" style="display: flex; align-items: center; gap: 10px; padding: 7px 10px; border-radius: 6px; color: #a39f95; text-decoration: none"><svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><rect x="2.5" y="3.5" width="11" height="10" rx="1.5"></rect><path d="M2.5 6.5h11M5.5 2v3M10.5 2v3"></path></svg><span style="flex-grow: 1">Reservas</span><span style="font-family: 'Geist Mono', monospace; font-size: 12px">24</span></a>
+      <a href="Sala.dc.html" style="display: flex; align-items: center; gap: 10px; padding: 7px 10px; border-radius: 6px; color: #a39f95; text-decoration: none"><svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><rect x="2.5" y="2.5" width="4.5" height="4.5" rx="1"></rect><rect x="9" y="2.5" width="4.5" height="4.5" rx="1"></rect><rect x="2.5" y="9" width="4.5" height="4.5" rx="1"></rect><circle cx="11.25" cy="11.25" r="2.25"></circle></svg>Sala</a>
+      <a href="#espera" style="display: flex; align-items: center; gap: 10px; padding: 7px 10px; border-radius: 6px; color: #a39f95; text-decoration: none"><svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><circle cx="8" cy="8" r="5.5"></circle><path d="M8 5v3l2 1.5"></path></svg><span style="flex-grow: 1">Lista de espera</span><span style="font-family: 'Geist Mono', monospace; font-size: 12px; color: #f0a35e">2</span></a>
+      <a href="#clientes" style="display: flex; align-items: center; gap: 10px; padding: 7px 10px; border-radius: 6px; color: #a39f95; text-decoration: none"><svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><circle cx="6" cy="5.5" r="2.5"></circle><path d="M1.5 13.5c.6-2.4 2.3-3.5 4.5-3.5s3.9 1.1 4.5 3.5M10.5 3.2a2.5 2.5 0 010 4.6M12 10.3c1.3.4 2.1 1.5 2.5 3.2"></path></svg>Clientes</a>
+    </div>
+    <div style="margin-top: auto; display: flex; align-items: center; gap: 10px; padding: 8px 10px; border-top: 1px solid rgba(244,241,234,0.07)">
+      <span aria-hidden="true" style="width: 28px; height: 28px; border-radius: 50%; background: #2a2620; color: #f0a35e; display: flex; align-items: center; justify-content: center; font-size: 12px; font-weight: 600">MS</span>
+      <span style="display: flex; flex-direction: column; line-height: 1.25"><span style="font-size: 13px">Marta Soler</span><span style="font-size: 12px; color: #a39f95">Propietaria</span></span>
+    </div>
+  </nav>
+
+  <main style="flex: 999 1 640px; min-width: 0; box-sizing: border-box; padding: 28px 32px 40px; display: flex; flex-direction: column; gap: 28px">
+    <header style="display: flex; flex-wrap: wrap; align-items: flex-end; justify-content: space-between; gap: 16px">
+      <div style="display: flex; flex-direction: column; gap: 4px">
+        <span style="font-size: 13px; color: #a39f95">lunes 9 de noviembre · cena</span>
+        <h1 style="margin: 0; font-size: 26px; font-weight: 600; letter-spacing: -0.02em">64 cubiertos esta noche, 8 plazas libres</h1>
+      </div>
+      <div style="display: flex; gap: 8px">
+        <a href="Sala.dc.html" style="height: 34px; padding: 0 14px; border-radius: 8px; border: 1px solid rgba(244,241,234,0.12); background: #1f1f1f; color: #f4f1ea; text-decoration: none; display: flex; align-items: center">Abrir sala</a>
+        <a href="Main.dc.html" style="height: 34px; padding: 0 14px; border-radius: 8px; background: #f0a35e; color: #1a1408; font-weight: 600; text-decoration: none; display: flex; align-items: center">Nueva reserva</a>
+      </div>
+    </header>
+
+    <section aria-label="Ahora" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 1px; background: rgba(244,241,234,0.07); border: 1px solid rgba(244,241,234,0.07); border-radius: 10px; overflow: hidden">
+      <div style="background: #161512; padding: 16px 18px; display: flex; flex-direction: column; gap: 6px">
+        <span style="font-size: 12px; color: #a39f95">Sentados ahora</span>
+        <span style="font-family: 'Geist Mono', monospace; font-size: 26px; font-weight: 500; color: #8fc7a0">22</span>
+        <span style="font-size: 12px; color: #a39f95">en 9 de 16 mesas</span>
+      </div>
+      <div style="background: #161512; padding: 16px 18px; display: flex; flex-direction: column; gap: 6px">
+        <span style="font-size: 12px; color: #a39f95">Llegan en la próxima hora</span>
+        <span style="font-family: 'Geist Mono', monospace; font-size: 26px; font-weight: 500">18</span>
+        <span style="font-size: 12px; color: #a39f95">6 reservas</span>
+      </div>
+      <div style="background: #161512; padding: 16px 18px; display: flex; flex-direction: column; gap: 6px">
+        <span style="font-size: 12px; color: #a39f95">Confirmadas por WhatsApp</span>
+        <span style="font-family: 'Geist Mono', monospace; font-size: 26px; font-weight: 500">11<span style="font-size: 15px; color: #a39f95"> de 14</span></span>
+        <span style="font-size: 12px; color: #a39f95">3 sin responder</span>
+      </div>
+      <div style="background: #161512; padding: 16px 18px; display: flex; flex-direction: column; gap: 6px">
+        <span style="font-size: 12px; color: #a39f95">Lista de espera</span>
+        <span style="font-family: 'Geist Mono', monospace; font-size: 26px; font-weight: 500; color: #f0a35e">2</span>
+        <span style="font-size: 12px; color: #a39f95">6 personas esperando</span>
+      </div>
+    </section>
+
+    <div style="display: flex; flex-wrap: wrap; gap: 28px">
+      <section aria-labelledby="atencion" style="flex: 3 1 420px; min-width: 0; display: flex; flex-direction: column; gap: 10px">
+        <h2 id="atencion" style="margin: 0; font-size: 14px; font-weight: 600">Necesita atención</h2>
+        <ul style="list-style: none; margin: 0; padding: 0; border: 1px solid rgba(244,241,234,0.07); border-radius: 10px; overflow: hidden">
+          <sc-for list="{{alerts}}" as="a" hint-placeholder-count="4">
+            <li style="display: grid; grid-template-columns: 10px minmax(0, 1fr) auto; gap: 14px; align-items: center; padding: 14px 16px; border-top: {{a.border}}; background: #161512">
+              <span aria-hidden="true" style="width: 8px; height: 8px; border-radius: 50%; background: {{a.dot}}"></span>
+              <span style="display: flex; flex-direction: column; gap: 2px; min-width: 0">
+                <span style="font-weight: 500">{{a.title}}</span>
+                <span style="font-size: 13px; color: #a39f95">{{a.detail}}</span>
+              </span>
+              <button type="button" style="height: 30px; padding: 0 12px; border-radius: 6px; border: 1px solid rgba(244,241,234,0.12); background: #1f1f1f; cursor: pointer; white-space: nowrap">{{a.action}}</button>
+            </li>
+          </sc-for>
+        </ul>
+      </section>
+
+      <section aria-labelledby="actividad" style="flex: 2 1 320px; min-width: 0; display: flex; flex-direction: column; gap: 10px">
+        <div style="display: flex; justify-content: space-between; align-items: baseline">
+          <h2 id="actividad" style="margin: 0; font-size: 14px; font-weight: 600">Actividad del servicio</h2>
+          <a href="#actividad-completa" style="font-size: 12px; text-decoration: none">Ver todo</a>
+        </div>
+        <ol style="list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column">
+          <sc-for list="{{activity}}" as="e" hint-placeholder-count="6">
+            <li style="display: grid; grid-template-columns: 44px minmax(0, 1fr); gap: 12px; padding: 9px 0; border-top: 1px solid rgba(244,241,234,0.06)">
+              <span style="font-family: 'Geist Mono', monospace; font-size: 12px; color: #a39f95; padding-top: 1px">{{e.time}}</span>
+              <span style="font-size: 13.5px"><span style="font-weight: 500">{{e.who}}</span> <span style="color: #d6d2c8">{{e.what}}</span></span>
+            </li>
+          </sc-for>
+        </ol>
+      </section>
+    </div>
+
+    <section aria-labelledby="turnos" style="display: flex; flex-direction: column; gap: 10px">
+      <h2 id="turnos" style="margin: 0; font-size: 14px; font-weight: 600">Esta semana</h2>
+      <div style="display: grid; grid-template-columns: repeat(7, minmax(84px, 1fr)); gap: 8px; overflow-x: auto">
+        <sc-for list="{{week}}" as="d" hint-placeholder-count="7">
+          <div style="display: flex; flex-direction: column; gap: 8px; padding: 12px; border-radius: 8px; border: 1px solid {{d.border}}; background: #161512">
+            <span style="font-size: 12px; color: {{d.labelColor}}">{{d.label}}</span>
+            <span style="font-family: 'Geist Mono', monospace; font-size: 18px">{{d.covers}}</span>
+            <span aria-hidden="true" style="display: block; height: 4px; border-radius: 2px; background: rgba(244,241,234,0.08); overflow: hidden"><span style="display: block; height: 4px; width: {{d.pct}}%; background: {{d.bar}}"></span></span>
+            <span style="font-size: 11.5px; color: #a39f95">{{d.note}}</span>
+          </div>
+        </sc-for>
+      </div>
+    </section>
+  </main>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":1440,"height":980}}'>
+class Component extends DCLogic {
+  renderVals() {
+    const alerts = [
+      { title: 'Marc Serra no tiene mesa', detail: '21:00 · 2 personas. La mejor opción es S3.', action: 'Asignar S3', dot: '#f0a35e' },
+      { title: 'Pau Ferrer llega 12 minutos tarde', detail: 'S1 queda libre a las 20:50 si no aparece.', action: 'Llamar', dot: '#f0a35e' },
+      { title: 'Clara Ibáñez tiene alergia a frutos secos', detail: '20:30 · S7. Avisar a cocina al sentarla.', action: 'Ver reserva', dot: '#e8857a' },
+      { title: 'Tres reservas sin confirmar', detail: 'No han respondido al recordatorio de las 12:00.', action: 'Revisar', dot: '#a39f95' }
+    ].map((a, i) => ({ ...a, border: i === 0 ? '0' : '1px solid rgba(244,241,234,0.06)' }));
+    const activity = [
+      { time: '20:38', who: 'Laura Vidal', what: 'ha sentado a Familia Roca en S4 + S5' },
+      { time: '20:31', who: 'El sistema', what: 'ha avisado a Núria Bosch de la lista de espera' },
+      { time: '20:22', who: 'Nora Costa', what: 'ha liberado S2' },
+      { time: '20:05', who: 'Laura Vidal', what: 'ha sentado a Elena Martín en T1' },
+      { time: '19:47', who: 'Reserva web', what: 'Lucía Gil, 4 personas a las 21:30' },
+      { time: '12:31', who: 'Hugo Vera', what: 'ha cancelado respondiendo por WhatsApp' }
+    ];
+    const W = [
+      ['lun 9', 64, 'hoy', true], ['mar 10', 41, ''], ['mié 11', 38, ''], ['jue 12', 57, ''], ['vie 13', 70, 'casi lleno'], ['sáb 14', 72, 'lleno · 4 en espera'], ['dom 15', 33, 'solo comida']
+    ];
+    const week = W.map(([label, covers, note, today]) => ({
+      label, covers, note: note || (72 - covers) + ' plazas libres',
+      pct: Math.round((covers / 72) * 100),
+      bar: covers >= 70 ? '#f0a35e' : '#8fc7a0',
+      border: today ? 'rgba(240,163,94,0.45)' : 'rgba(244,241,234,0.07)',
+      labelColor: today ? '#f0a35e' : '#a39f95'
+    }));
+    return { alerts, activity, week };
+  }
+}
+</script>
+</body>
+</html>

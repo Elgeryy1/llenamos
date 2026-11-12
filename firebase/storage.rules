@@ -1,0 +1,35 @@
+rules_version = '2';
+service firebase.storage {
+  match /b/{bucket}/o {
+    function floor(rid) {
+      let r = firestore.get(/databases/(default)/documents/restaurants/$(rid)).data;
+      let plan = r.get('plan', null);
+      return plan != null && r.get('activeModules', null) is list
+        ? 'floor' in r.activeModules
+        : r.get('moduleOverrides', {}).get('floor', plan == null || plan in ['sala','completo']);
+    }
+    function identityCurrent() {
+      let path = /databases/(default)/documents/identitySecurity/$(request.auth.uid);
+      return !firestore.exists(path) || (firestore.get(path).data.locked == false && request.auth.token.get('sessionVersion', '') == firestore.get(path).data.version);
+    }
+    function editor(rid, lid) {
+      let m = firestore.get(/databases/(default)/documents/restaurants/$(rid)/members/$(request.auth.uid)).data;
+      return identityCurrent() && request.auth.token.get('logiqd', false) != true && m.active == true && m.role in ['owner','manager']
+        && (m.locationIds.size() == 0 || lid in m.locationIds) && floor(rid);
+    }
+    // Fase 3 no publica artefactos ni recibos en Storage. El enlace se valida en el backend.
+    match /restaurants/{rid}/locations/{lid}/{privateKind}/{file=**} {
+      allow read, write: if false;
+    }
+    match /restaurants/{rid}/fiscal/{file=**} { allow read, write: if false; }
+    match /restaurants/{rid}/locations/{lid}/menu/{itemId}/{file} {
+      function item() { return firestore.get(/databases/(default)/documents/restaurants/$(rid)/locations/$(lid)/menuItems/$(itemId)).data; }
+      allow get: if item().active == true && item().photoPath == 'restaurants/' + rid + '/locations/' + lid + '/menu/' + itemId + '/' + file;
+      allow create, update: if request.auth != null && editor(rid,lid)
+        && firestore.exists(/databases/(default)/documents/restaurants/$(rid)/locations/$(lid)/menuItems/$(itemId))
+        && request.resource.size <= 5 * 1024 * 1024
+        && request.resource.contentType in ['image/jpeg','image/png','image/webp'];
+      allow delete: if request.auth != null && editor(rid,lid);
+    }
+  }
+}

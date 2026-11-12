@@ -1,0 +1,196 @@
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+    function member(rid) { return get(/databases/$(database)/documents/restaurants/$(rid)/members/$(request.auth.uid)).data; }
+    function identityCurrent() {
+      let path = /databases/$(database)/documents/identitySecurity/$(request.auth.uid);
+      return !exists(path) || (get(path).data.locked == false && request.auth.token.get('sessionVersion', '') == get(path).data.version);
+    }
+    function active(rid) { return request.auth != null && identityCurrent() && request.auth.token.get('logiqd', false) != true && member(rid).active == true; }
+    function manages(rid) { return active(rid) && member(rid).role in ['owner', 'manager']; }
+    function local(rid, lid) { return active(rid) && (member(rid).locationIds.size() == 0 || lid in member(rid).locationIds); }
+    function module(rid, name) {
+      let r = get(/databases/$(database)/documents/restaurants/$(rid)).data;
+      let plan = r.get('plan', null);
+      let included = plan == null || plan == 'completo' || (plan == 'sala' && name in ['reservations','floor','kitchen']) || (plan == 'reservas' && name == 'reservations');
+      return r.get('entitlementVersion', 0) > 0
+        ? (r.get('accessValidUntil', null) is timestamp && request.time < r.accessValidUntil
+          && r.get('activeModules', null) is list && name in r.activeModules)
+        : plan != null && r.get('activeModules', null) is list
+        ? name in r.activeModules
+        : r.get('moduleOverrides', {}).get(name, included);
+    }
+    function platformService(rid) {
+      let r = get(/databases/$(database)/documents/restaurants/$(rid)).data;
+      return r.get('entitlementVersion', 0) == 0 || (r.get('accessValidUntil', null) is timestamp && request.time < r.accessValidUntil);
+    }
+    function legacyCapacity(rid) { return get(/databases/$(database)/documents/restaurants/$(rid)).data.get('entitlementVersion', 0) == 0; }
+    function reservations(rid) { return module(rid, 'reservations'); }
+    function floorStaff(rid, lid) { return local(rid,lid) && module(rid,'floor') && member(rid).role in ['owner','manager','waiter']; }
+    function floorReader(rid, lid) { return floorStaff(rid,lid) || (local(rid,lid) && module(rid,'floor') && module(rid,'kitchen') && member(rid).role in ['kitchen','bar']); }
+    function stationReader(rid, lid) { return local(rid,lid) && module(rid,'kitchen') && (member(rid).role in ['owner','manager'] || (module(rid,'floor') && member(rid).role in ['waiter','kitchen','bar'])); }
+    function posReader(rid,lid) { return local(rid,lid) && module(rid,'pos') && member(rid).role in ['owner','manager','waiter']; }
+    function posManager(rid,lid) { return local(rid,lid) && module(rid,'pos') && manages(rid); }
+    // Fase 4. Ningún documento admite escritura de cliente: las callables y los procesos escriben con el SDK de administración.
+    function staffOn(rid,lid) { return local(rid,lid) && module(rid,'staff'); }
+    function staffManager(rid,lid) { return staffOn(rid,lid) && manages(rid); }
+    function inventoryOn(rid,lid) { return local(rid,lid) && module(rid,'inventory'); }
+    function inventoryReader(rid,lid) { return inventoryOn(rid,lid) && member(rid).role in ['owner','manager','kitchen','bar']; }
+    function inventoryManager(rid,lid) { return inventoryOn(rid,lid) && manages(rid); }
+    function bookingStaff(rid) { return active(rid) && reservations(rid) && member(rid).role in ['owner','manager','waiter']; }
+    function str(v, min, max) { return v is string && v.size() >= min && v.size() <= max; }
+    function tag(tags, i) { return tags.size() <= i || str(tags[i],1,30); }
+    function tagsValid(tags) {
+      return tags is list && tags.size() <= 20
+        && tag(tags,0) && tag(tags,1) && tag(tags,2) && tag(tags,3) && tag(tags,4)
+        && tag(tags,5) && tag(tags,6) && tag(tags,7) && tag(tags,8) && tag(tags,9)
+        && tag(tags,10) && tag(tags,11) && tag(tags,12) && tag(tags,13) && tag(tags,14)
+        && tag(tags,15) && tag(tags,16) && tag(tags,17) && tag(tags,18) && tag(tags,19);
+    }
+    function timestamps(d) {
+      return d.createdAt is timestamp && d.updatedAt == request.time
+        && (resource == null ? d.createdAt == request.time : d.createdAt == resource.data.createdAt);
+    }
+    function location(d) {
+      return d.keys().hasOnly(['name','slug','address','city','phone','createdAt','updatedAt','updatedBy'])
+        && str(d.name,2,80) && str(d.slug,1,100) && d.slug.matches('^[a-z0-9]+(-[a-z0-9]+)*$')
+        && str(d.address,0,200) && str(d.city,0,80) && str(d.phone,0,30) && timestamps(d) && d.updatedBy == request.auth.uid;
+    }
+    function area(d) {
+      return d.keys().hasOnly(['name','sortOrder','createdAt','updatedAt','updatedBy'])
+        && str(d.name,1,40) && d.sortOrder is int && timestamps(d) && d.updatedBy == request.auth.uid;
+    }
+    function percent(v, min) { return v is number && v >= min && v <= 100; }
+    function table(d, rid, lid) {
+      return d.keys().hasOnly(['name','areaId','seats','shape','x','y','w','h','joinableWith','enabled','createdAt','updatedAt','updatedBy'])
+        && str(d.name,1,20) && str(d.areaId,1,1500)
+        && exists(/databases/$(database)/documents/restaurants/$(rid)/locations/$(lid)/areas/$(d.areaId))
+        && d.seats is int && d.seats >= 1 && d.seats <= 30 && d.shape in ['rect','round']
+        && percent(d.x,0) && percent(d.y,0) && percent(d.w,2) && percent(d.h,2)
+        && d.joinableWith is list
+        // Reconstruir la lista comprueba los tipos; los ids de documento no contienen '/'.
+        && (d.joinableWith.size() == 0 || d.joinableWith.join('/').split('/') == d.joinableWith)
+        && d.enabled is bool && timestamps(d) && d.updatedBy == request.auth.uid;
+    }
+    match /users/{uid} { allow read: if request.auth != null && identityCurrent() && request.auth.uid == uid; }
+    match /publicMenus/{id} { allow get: if true; }
+    match /publicRestaurants/{slug} { allow read: if true; }
+    match /restaurants/{rid} {
+      // Credenciales cifradas y estado técnico: solo funciones autorizadas, nunca SDK cliente.
+      match /integrationSecrets/{id} { allow read, write: if false; }
+      match /providerStatus/{id} { allow read, write: if false; }
+      allow read: if active(rid);
+      allow update: if manages(rid)
+        && request.resource.data.diff(resource.data).affectedKeys().hasOnly(['name','brandColor','locale','updatedAt','updatedBy'])
+        && request.resource.data.updatedBy == request.auth.uid
+        && str(request.resource.data.name,2,80)
+        && request.resource.data.brandColor is string && request.resource.data.brandColor.matches('^#[0-9a-fA-F]{6}$')
+        && request.resource.data.locale in ['es','ca','en'] && request.resource.data.updatedAt == request.time;
+      match /members/{uid} { allow read: if active(rid); }
+      match /activity/{id} { allow read: if manages(rid); }
+      match /messages/{id} { allow read: if manages(rid) && reservations(rid); }
+      match /customers/{id} {
+        allow read: if bookingStaff(rid);
+        allow update: if bookingStaff(rid)
+          && request.resource.data.diff(resource.data).affectedKeys().hasOnly(['notes','allergies','tags','updatedBy','updatedAt'])
+          && request.resource.data.updatedBy == request.auth.uid && request.resource.data.updatedAt == request.time
+          && str(request.resource.data.notes,0,1000) && str(request.resource.data.allergies,0,500)
+          && tagsValid(request.resource.data.tags);
+      }
+      // Fase 5: documentos de servidor, permisos coherentes con FASE5_ACCESS.
+      function loyaltyReader() { return active(rid) && module(rid,'loyalty') && member(rid).role in ['owner','manager','waiter']; }
+      function campaignReader() { return manages(rid) && module(rid,'marketing'); }
+      function analyticsReader() { return manages(rid) && module(rid,'analytics'); }
+      match /settings/{id} { allow get: if (id == 'loyalty' && loyaltyReader()) || (id == 'repite' && manages(rid) && module(rid,'repite')) || (id == 'marketing' && campaignReader()) || (id == 'analytics' && analyticsReader()); }
+      match /loyaltyAccounts/{id} { allow read: if loyaltyReader(); }
+      match /loyaltyMovements/{id} { allow read: if loyaltyReader(); }
+      match /loyaltyRewards/{id} { allow read: if loyaltyReader(); }
+      match /loyaltyRedemptions/{id} { allow read: if loyaltyReader() && (member(rid).locationIds.size() == 0 || resource.data.locationId in member(rid).locationIds); }
+      match /promotions/{id} { allow read: if loyaltyReader() && (manages(rid) || resource.data.status == 'active'); }
+      match /repiteCards/{id} { allow read: if active(rid) && module(rid,'repite') && member(rid).role in ['owner','manager','waiter']; }
+      match /segments/{id} { allow read: if campaignReader(); }
+      match /campaigns/{id} {
+        allow read: if campaignReader() && (member(rid).locationIds.size() == 0 || resource.data.locationId in member(rid).locationIds);
+        match /recipients/{cid} { allow read: if campaignReader() && (member(rid).locationIds.size() == 0 || get(/databases/$(database)/documents/restaurants/$(rid)/campaigns/$(id)).data.locationId in member(rid).locationIds); }
+      }
+      match /automationRules/{id} { allow read: if analyticsReader() && (member(rid).locationIds.size() == 0 || resource.data.locationIds.hasOnly(member(rid).locationIds)); }
+      match /recommendations/{id} { allow read: if analyticsReader() && (member(rid).locationIds.size() == 0 || resource.data.locationId in member(rid).locationIds); }
+      // customerUses, outbox, tokens, sendLog, eventos, resúmenes y peticiones quedan privados.
+      match /locations/{lid} {
+        allow read: if local(rid,lid);
+        allow create: if manages(rid) && local(rid,lid) && legacyCapacity(rid) && location(request.resource.data);
+        allow update: if manages(rid) && local(rid,lid) && location(request.resource.data);
+        allow delete: if manages(rid) && local(rid,lid) && legacyCapacity(rid);
+        match /reservationOrigins/{id} { allow read: if bookingStaff(rid) && local(rid,lid); }
+        match /billPromotions/{id} { allow read: if posReader(rid,lid) && module(rid,'loyalty'); }
+        match /analyticsDays/{id} { allow read: if local(rid,lid) && manages(rid) && module(rid,'analytics'); }
+        match /reservations/{id} { allow read: if bookingStaff(rid) && local(rid,lid); }
+        match /waitlist/{id} { allow read: if bookingStaff(rid) && local(rid,lid); }
+        match /settings/{id} { allow read: if (id == 'reservations' && bookingStaff(rid) && local(rid,lid)) || (id == 'floor' && floorReader(rid,lid)) || (id == 'pos' && posManager(rid,lid)) || (id == 'staff' && staffManager(rid,lid)) || (id == 'inventory' && inventoryManager(rid,lid)); }
+        // Caja: todos los documentos son de servidor. Los índices y credenciales no tienen lectura.
+        match /bills/{id} { allow read: if posReader(rid,lid) && module(rid,'floor'); }
+        match /billParts/{id} { allow read: if posReader(rid,lid) && module(rid,'floor'); }
+        match /payments/{id} { allow read: if posReader(rid,lid); }
+        // Una factura conservada tras borrar al cliente solo la lee (get) quien gestiona: el trabajador de privacidad marca la restricción aparte.
+        // Las reglas no pueden mirar otro documento por cada resultado de una consulta (list), así que el listado sigue siendo el de caja.
+        match /invoices/{id} {
+          allow get: if posReader(rid,lid)
+            && (!exists(/databases/$(database)/documents/restaurants/$(rid)/locations/$(lid)/privacyRestrictedInvoices/$(id)) || manages(rid));
+          allow list: if posReader(rid,lid);
+        }
+        match /invoiceEvents/{id} { allow read: if posReader(rid,lid); }
+        match /billAdjustments/{id} { allow read: if posManager(rid,lid); }
+        match /cashSessions/{id} { allow read: if posManager(rid,lid); }
+        match /cashMovements/{id} { allow read: if posManager(rid,lid); }
+        match /tipDistributions/{id} { allow read: if posManager(rid,lid); }
+        match /invoiceSeries/{id} { allow read: if posManager(rid,lid); }
+        match /mobileIncidents/{id} { allow read: if posManager(rid,lid); }
+        match /printers/{id} { allow read: if posManager(rid,lid); }
+        match /printStatuses/{id} { allow read: if posReader(rid,lid); }
+        match /menuCategories/{id} { allow read: if floorReader(rid,lid); }
+        match /menuItems/{id} { allow read: if floorReader(rid,lid); }
+        match /dailyMenus/{id} { allow read: if floorReader(rid,lid); }
+        match /stations/{id} { allow read: if stationReader(rid,lid); }
+        match /tableSessions/{id} { allow read: if floorStaff(rid,lid); }
+        match /orders/{id} { allow read: if floorStaff(rid,lid); }
+        match /takeaways/{id} { allow read: if floorStaff(rid,lid); }
+        match /floorTasks/{id} { allow read: if floorStaff(rid,lid); }
+        match /orderLines/{id} {
+          allow read: if floorStaff(rid,lid) || (local(rid,lid) && module(rid,'floor') && module(rid,'kitchen')
+            && member(rid).role in ['kitchen','bar'] && resource.data.stationKind == member(rid).role
+            && resource.data.stationId is string && resource.data.status in ['held','fired','preparing','ready','served','cancelled']);
+        }
+        // Personal: cada persona lee solo sus fichajes y el cuadrante publicado; el encargado lee todo.
+        // Las consultas piden siempre el filtro de la regla (uid propio, status publicado).
+        match /timeEntries/{id} { allow read: if staffManager(rid,lid) || (staffOn(rid,lid) && resource.data.uid == request.auth.uid); }
+        match /timeEntryEvents/{id} { allow read: if staffManager(rid,lid); }
+        match /shifts/{id} { allow read: if staffManager(rid,lid) || (staffOn(rid,lid) && resource.data.status == 'published'); }
+        // Inventario: cocina y barra ven existencias y avisos, nunca costes. staffPins, staffRequests, purchaseReferences e inventoryRequests no tienen lectura.
+        match /ingredients/{id} { allow read: if inventoryReader(rid,lid); }
+        match /stockAlerts/{id} { allow read: if inventoryReader(rid,lid); }
+        match /ingredientCosts/{id} { allow read: if inventoryManager(rid,lid); }
+        match /stockMovements/{id} { allow read: if inventoryManager(rid,lid); }
+        match /recipes/{id} {
+          allow read: if inventoryManager(rid,lid);
+          match /versions/{n} { allow read: if inventoryManager(rid,lid); }
+        }
+        match /lineCosts/{id} { allow read: if inventoryManager(rid,lid); }
+        match /stockCounts/{id} { allow read: if inventoryManager(rid,lid); }
+        match /suppliers/{id} { allow read: if inventoryManager(rid,lid); }
+        match /supplierItems/{id} { allow read: if inventoryManager(rid,lid); }
+        match /purchaseOrders/{id} { allow read: if inventoryManager(rid,lid); }
+        match /goodsReceipts/{id} { allow read: if inventoryManager(rid,lid); }
+        match /areas/{aid} {
+          allow read: if local(rid,lid) && platformService(rid);
+          allow create, update: if manages(rid) && local(rid,lid) && platformService(rid) && area(request.resource.data);
+          allow delete: if manages(rid) && local(rid,lid);
+        }
+        match /tables/{tid} {
+          allow read: if local(rid,lid) && platformService(rid);
+          allow create, update: if manages(rid) && local(rid,lid) && platformService(rid) && table(request.resource.data,rid,lid);
+          allow delete: if manages(rid) && local(rid,lid);
+        }
+      }
+    }
+  }
+}

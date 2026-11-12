@@ -1,0 +1,33 @@
+# Preparación de infraestructura; la aplicación legacy aún no usa esta base.
+services:
+  postgres:
+    image: postgres:18.4-bookworm@sha256:882236b897e39051d2368c5ccc6cda944904723506b2dfc97f2a8f5bc9afa382
+    profiles: [vps-backend]
+    restart: unless-stopped
+    mem_limit: 384m
+    cpus: 0.75
+    environment:
+      POSTGRES_USER: llenamos_bootstrap
+      POSTGRES_DB: llenamos
+      POSTGRES_PASSWORD_FILE: /run/secrets/postgres_bootstrap_password
+    secrets: [postgres_bootstrap_password]
+    volumes: [postgres_data:/var/lib/postgresql]
+    networks: [database]
+    command: [postgres, -c, shared_buffers=128MB, -c, max_connections=30, -c, work_mem=2MB, -c, maintenance_work_mem=32MB, -c, effective_cache_size=192MB, -c, wal_buffers=4MB, -c, max_wal_size=512MB, -c, autovacuum_max_workers=2]
+    healthcheck:
+      test: [CMD, pg_isready, -U, llenamos_bootstrap, -d, llenamos]
+      interval: 15s
+      timeout: 5s
+      start_period: 30s
+    security_opt: [no-new-privileges:true]
+    logging:
+      driver: json-file
+      options: {max-size: 10m, max-file: '3'}
+volumes:
+  postgres_data:
+networks:
+  database:
+    internal: true
+secrets:
+  postgres_bootstrap_password:
+    file: ${POSTGRES_BOOTSTRAP_PASSWORD_FILE:-./secrets/postgres_bootstrap_password}

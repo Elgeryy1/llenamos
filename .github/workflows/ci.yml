@@ -1,0 +1,52 @@
+name: Verificación
+on:
+  push:
+  pull_request:
+permissions:
+  contents: read
+concurrency:
+  group: verificar-${{ github.ref }}
+  cancel-in-progress: true
+jobs:
+  postgres-proxy:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4
+      - uses: pnpm/action-setup@f40ffcd9367d9f12939873eb1018b921a783ffaa # v4
+      - uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020 # v4
+        with:
+          node-version: 22
+          cache: pnpm
+      - run: pnpm install --frozen-lockfile --prefer-offline
+      - run: sh apps/api/scripts/test-postgres-docker.sh
+      - run: node --test deploy/vps/validate-public-env.test.mjs
+      - run: node --test deploy/vps/memoria.test.mjs
+      - run: node deploy/vps/nginx-security.test.mjs
+      - run: sh deploy/vps/backup/drill-test.sh
+  verificar:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    env:
+      # Destino sintético solo para compilar/verificar; esta tarea no publica la landing.
+      VITE_APP_URL: https://app.example.com
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4
+      - uses: pnpm/action-setup@f40ffcd9367d9f12939873eb1018b921a783ffaa # v4
+      - uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020 # v4
+        with:
+          node-version: 22
+          cache: pnpm
+      - uses: actions/setup-java@cf277c60eb25467037889841efdb72551f06f6c3 # v4
+        with:
+          distribution: microsoft
+          java-version: 21
+      - run: pnpm install --frozen-lockfile --prefer-offline
+      - run: pnpm verificar
+      - name: Regresiones de invitaciones y enlaces con emuladores
+        env:
+          GCLOUD_PROJECT: demo-llenamos
+          TEST_FIREBASE_EMULATORS: '1'
+        run: pnpm exec firebase emulators:exec --project demo-llenamos --only auth,firestore "pnpm --filter functions exec vitest run src/account-invitations.integration.test.ts src/public-app-url.integration.test.ts"
+      - name: Bundle de producción sin Firestore, Functions ni Storage
+        run: TEST_BUNDLE=1 pnpm --filter web exec vitest run src/test/bundle-produccion.test.ts

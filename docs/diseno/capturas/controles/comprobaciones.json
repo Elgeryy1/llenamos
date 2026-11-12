@@ -1,0 +1,13 @@
+{
+  "checks": [
+    "escritorio: fechas propias, día especial, cierre inválido bloquea guardar y objetivos táctiles del calendario",
+    "escritorio: hora fuera de turno 03:15 seleccionada sin control nativo",
+    "escritorio: calendario y desplegable públicos propios, 48 px en móvil",
+    "tableta: fechas propias, día especial, cierre inválido bloquea guardar y objetivos táctiles del calendario",
+    "tableta: hora fuera de turno 03:15 seleccionada sin control nativo",
+    "movil: fechas propias, día especial, cierre inválido bloquea guardar y objetivos táctiles del calendario",
+    "movil: hora fuera de turno 03:15 seleccionada sin control nativo",
+    "movil: calendario y desplegable públicos propios, 48 px en móvil"
+  ],
+  "errors": []
+}

@@ -1,0 +1,191 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<title>Sala en directo</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600&amp;family=Geist+Mono:wght@400;500&amp;display=swap">
+<style>
+body{margin:0;background:#131209}
+a{color:#f0a35e}a:hover{color:#f6bd88}
+button{font:inherit;color:inherit}
+button:focus-visible,a:focus-visible{outline:2px solid #f0a35e;outline-offset:2px}
+</style>
+</helmet>
+<div style="min-height: 100vh; display: flex; flex-wrap: wrap; background: #131209; color: #f4f1ea; font-family: Geist, system-ui, sans-serif; font-size: 14px; line-height: 1.45">
+
+  <nav aria-label="Panel" style="flex: 1 1 224px; box-sizing: border-box; padding: 16px 12px; display: flex; flex-direction: column; gap: 20px; border-right: 1px solid rgba(244,241,234,0.07)">
+    <div style="display: flex; align-items: center; gap: 10px; padding: 4px 8px">
+      <svg width="22" height="22" viewBox="0 0 24 24" aria-hidden="true"><rect x="7" y="7" width="10" height="10" rx="2" fill="#f0a35e"></rect><rect x="9" y="2.5" width="6" height="2.5" rx="1.25" fill="#a39f95"></rect><rect x="9" y="19" width="6" height="2.5" rx="1.25" fill="#a39f95"></rect><rect x="2.5" y="9" width="2.5" height="6" rx="1.25" fill="#a39f95"></rect><rect x="19" y="9" width="2.5" height="6" rx="1.25" fill="#a39f95"></rect></svg>
+      <span style="font-weight: 600; font-size: 15px; letter-spacing: -0.01em">llenamos</span>
+    </div>
+    <button type="button" style="display: flex; align-items: center; justify-content: space-between; gap: 8px; padding: 8px 10px; border-radius: 8px; border: 1px solid rgba(244,241,234,0.09); background: #181818; cursor: pointer; text-align: left">
+      <span style="display: flex; flex-direction: column; gap: 1px"><span style="font-weight: 500">Taberna Lumbre</span><span style="font-size: 12px; color: #a39f95">Plan sala · Gràcia</span></span>
+      <svg width="14" height="14" viewBox="0 0 16 16" fill="none" stroke="#a39f95" stroke-width="1.5" aria-hidden="true"><path d="M5 6l3-3 3 3M5 10l3 3 3-3"></path></svg>
+    </button>
+    <div style="display: flex; flex-direction: column; gap: 2px">
+      <a href="Inicio.dc.html" style="display: flex; align-items: center; gap: 10px; padding: 7px 10px; border-radius: 6px; color: #a39f95; text-decoration: none"><svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M2.5 7L8 2.5 13.5 7v6.5h-11z"></path></svg>Inicio</a>
+      <a href="Main.dc.html" style="display: flex; align-items: center; gap: 10px; padding: 7px 10px; border-radius: 6px; color: #a39f95; text-decoration: none"><svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><rect x="2.5" y="3.5" width="11" height="10" rx="1.5"></rect><path d="M2.5 6.5h11M5.5 2v3M10.5 2v3"></path></svg><span style="flex-grow: 1">Reservas</span><span style="font-family: 'Geist Mono', monospace; font-size: 12px">24</span></a>
+      <a href="Sala.dc.html" aria-current="page" style="display: flex; align-items: center; gap: 10px; padding: 7px 10px; border-radius: 6px; color: #f4f1ea; background: #1f1f1f; text-decoration: none"><svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><rect x="2.5" y="2.5" width="4.5" height="4.5" rx="1"></rect><rect x="9" y="2.5" width="4.5" height="4.5" rx="1"></rect><rect x="2.5" y="9" width="4.5" height="4.5" rx="1"></rect><circle cx="11.25" cy="11.25" r="2.25"></circle></svg>Sala</a>
+      <a href="#espera" style="display: flex; align-items: center; gap: 10px; padding: 7px 10px; border-radius: 6px; color: #a39f95; text-decoration: none"><svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><circle cx="8" cy="8" r="5.5"></circle><path d="M8 5v3l2 1.5"></path></svg><span style="flex-grow: 1">Lista de espera</span><span style="font-family: 'Geist Mono', monospace; font-size: 12px; color: #f0a35e">2</span></a>
+      <a href="#clientes" style="display: flex; align-items: center; gap: 10px; padding: 7px 10px; border-radius: 6px; color: #a39f95; text-decoration: none"><svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><circle cx="6" cy="5.5" r="2.5"></circle><path d="M1.5 13.5c.6-2.4 2.3-3.5 4.5-3.5s3.9 1.1 4.5 3.5M10.5 3.2a2.5 2.5 0 010 4.6M12 10.3c1.3.4 2.1 1.5 2.5 3.2"></path></svg>Clientes</a>
+    </div>
+    <div style="margin-top: auto; display: flex; align-items: center; gap: 10px; padding: 8px 10px; border-top: 1px solid rgba(244,241,234,0.07)">
+      <span aria-hidden="true" style="width: 28px; height: 28px; border-radius: 50%; background: #23302a; color: #8fc7a0; display: flex; align-items: center; justify-content: center; font-size: 12px; font-weight: 600">LV</span>
+      <span style="display: flex; flex-direction: column; line-height: 1.25"><span style="font-size: 13px">Laura Vidal</span><span style="font-size: 12px; color: #a39f95">Encargada</span></span>
+    </div>
+  </nav>
+
+  <main style="flex: 999 1 640px; min-width: 0; display: flex; flex-direction: column">
+    <header style="display: flex; flex-wrap: wrap; align-items: center; gap: 12px; padding: 14px 24px; border-bottom: 1px solid rgba(244,241,234,0.07)">
+      <h1 style="margin: 0; font-size: 18px; font-weight: 600; letter-spacing: -0.01em">Sala</h1>
+      <span style="display: flex; align-items: center; gap: 6px; font-size: 12px; color: #8fc7a0"><span aria-hidden="true" style="width: 6px; height: 6px; border-radius: 50%; background: #8fc7a0"></span>En directo · 20:42</span>
+      <div role="group" aria-label="Zona" style="display: flex; padding: 2px; border-radius: 8px; background: #181818; border: 1px solid rgba(244,241,234,0.07); margin-left: 8px">
+        <button type="button" aria-pressed="true" style="height: 26px; padding: 0 12px; border-radius: 6px; border: 0; background: #2a2723; cursor: pointer">Salón y barra</button>
+        <button type="button" style="height: 26px; padding: 0 12px; border-radius: 6px; border: 0; background: transparent; color: #a39f95; cursor: pointer">Terraza</button>
+      </div>
+      <div style="flex-grow: 1"></div>
+      <div style="display: flex; flex-wrap: wrap; gap: 14px; font-size: 12px; color: #a39f95">
+        <span style="display: flex; align-items: center; gap: 6px"><span aria-hidden="true" style="width: 10px; height: 10px; border-radius: 3px; border: 1px solid rgba(244,241,234,0.22)"></span>Libre</span>
+        <span style="display: flex; align-items: center; gap: 6px"><span aria-hidden="true" style="width: 10px; height: 10px; border-radius: 3px; background: rgba(143,199,160,0.22); border: 1px solid #8fc7a0"></span>Sentada</span>
+        <span style="display: flex; align-items: center; gap: 6px"><span aria-hidden="true" style="width: 10px; height: 10px; border-radius: 3px; border: 1px dashed #f0a35e"></span>Llega pronto</span>
+        <span style="display: flex; align-items: center; gap: 6px"><span aria-hidden="true" style="width: 10px; height: 10px; border-radius: 3px; background: repeating-linear-gradient(135deg, rgba(244,241,234,0.18) 0 2px, transparent 2px 5px); border: 1px solid rgba(244,241,234,0.22)"></span>Por recoger</span>
+      </div>
+    </header>
+
+    <div style="display: flex; flex-wrap: wrap; flex-grow: 1">
+      <section aria-label="Plano del salón" style="flex: 999 1 600px; min-width: 0; padding: 20px 24px; display: flex; flex-direction: column; gap: 14px">
+        <div style="display: flex; flex-wrap: wrap; gap: 24px; font-size: 13px">
+          <span><span style="font-family: 'Geist Mono', monospace; font-size: 16px">9</span> <span style="color: #a39f95">de 16 mesas ocupadas</span></span>
+          <span><span style="font-family: 'Geist Mono', monospace; font-size: 16px">22</span> <span style="color: #a39f95">cubiertos sentados</span></span>
+          <span><span style="font-family: 'Geist Mono', monospace; font-size: 16px; color: #f0a35e">3</span> <span style="color: #a39f95">llegan en 30 min</span></span>
+        </div>
+        <div style="overflow: auto; border-radius: 10px; border: 1px solid rgba(244,241,234,0.07); background: #161512">
+          <div style="position: relative; width: 900px; height: 600px; background-image: radial-gradient(rgba(244,241,234,0.06) 1px, transparent 1px); background-size: 20px 20px">
+            <span style="position: absolute; left: 24px; top: 18px; font-size: 12px; color: #a39f95">Salón</span>
+            <span style="position: absolute; left: 640px; top: 18px; font-size: 12px; color: #a39f95">Barra</span>
+            <div aria-hidden="true" style="position: absolute; left: 640px; top: 44px; width: 236px; height: 14px; border-radius: 4px; background: #24221d"></div>
+            <div aria-hidden="true" style="position: absolute; left: 600px; top: 18px; width: 1px; height: 564px; background: rgba(244,241,234,0.07)"></div>
+            <span style="position: absolute; left: 24px; bottom: 16px; font-size: 12px; color: #a39f95">Entrada</span>
+            <sc-for list="{{tables}}" as="t" hint-placeholder-count="13">
+              <button type="button" aria-label="{{t.aria}}" style="position: absolute; left: {{t.x}}px; top: {{t.y}}px; width: {{t.w}}px; height: {{t.h}}px; box-sizing: border-box; border-radius: {{t.radius}}; border: 1px {{t.borderStyle}} {{t.border}}; background: {{t.bg}}; padding: 8px 10px; display: flex; flex-direction: column; justify-content: space-between; text-align: left; cursor: pointer; overflow: hidden">
+                <span style="display: flex; justify-content: space-between; align-items: baseline; gap: 6px; width: 100%">
+                  <span style="font-family: 'Geist Mono', monospace; font-size: 13px; font-weight: 500">{{t.id}}</span>
+                  <span style="font-family: 'Geist Mono', monospace; font-size: 11px; color: #a39f95">{{t.seats}}</span>
+                </span>
+                <span style="display: flex; flex-direction: column; gap: 4px; width: 100%">
+                  <span style="font-size: 12px; color: {{t.lineColor}}; white-space: nowrap; overflow: hidden; text-overflow: ellipsis">{{t.line}}</span>
+                  <sc-if value="{{t.seated}}" hint-placeholder-val="{{true}}">
+                    <span aria-hidden="true" style="display: block; height: 3px; border-radius: 2px; background: rgba(244,241,234,0.1); overflow: hidden"><span style="display: block; height: 3px; width: {{t.progress}}%; background: {{t.progressColor}}"></span></span>
+                  </sc-if>
+                </span>
+              </button>
+            </sc-for>
+          </div>
+        </div>
+      </section>
+
+      <aside aria-label="Llegadas y espera" style="flex: 1 1 320px; box-sizing: border-box; border-left: 1px solid rgba(244,241,234,0.07); background: #161512; padding: 20px 20px; display: flex; flex-direction: column; gap: 24px">
+        <div style="display: flex; flex-direction: column; gap: 10px">
+          <div style="display: flex; justify-content: space-between; align-items: baseline"><h2 style="margin: 0; font-size: 14px; font-weight: 600">Próximas llegadas</h2><a href="Main.dc.html" style="font-size: 12px; text-decoration: none">Ver todas</a></div>
+          <ul style="list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column">
+            <sc-for list="{{arrivals}}" as="a" hint-placeholder-count="4">
+              <li style="display: grid; grid-template-columns: 48px minmax(0, 1fr) auto; gap: 10px; align-items: center; padding: 9px 0; border-top: 1px solid rgba(244,241,234,0.06)">
+                <span style="font-family: 'Geist Mono', monospace; font-size: 13px; color: {{a.timeColor}}">{{a.time}}</span>
+                <span style="display: flex; flex-direction: column; min-width: 0"><span style="white-space: nowrap; overflow: hidden; text-overflow: ellipsis">{{a.name}}</span><span style="font-size: 12px; color: #a39f95">{{a.detail}}</span></span>
+                <span style="font-family: 'Geist Mono', monospace; font-size: 12px; padding: 1px 6px; border-radius: 4px; background: {{a.tableBg}}; color: {{a.tableFg}}">{{a.table}}</span>
+              </li>
+            </sc-for>
+          </ul>
+        </div>
+        <div id="espera" style="display: flex; flex-direction: column; gap: 10px">
+          <div style="display: flex; justify-content: space-between; align-items: baseline"><h2 style="margin: 0; font-size: 14px; font-weight: 600">Lista de espera</h2><span style="font-size: 12px; color: #a39f95">avisa sola al liberar mesa</span></div>
+          <sc-for list="{{waiting}}" as="w" hint-placeholder-count="2">
+            <div style="display: flex; flex-direction: column; gap: 8px; padding: 12px; border-radius: 8px; border: 1px solid rgba(244,241,234,0.08); background: #181818">
+              <div style="display: flex; justify-content: space-between; align-items: baseline; gap: 8px">
+                <span style="font-weight: 500">{{w.name}}</span>
+                <span style="font-family: 'Geist Mono', monospace; font-size: 12px; color: #a39f95">{{w.size}} pers. · {{w.wait}}</span>
+              </div>
+              <span style="font-size: 12px; color: {{w.hintColor}}">{{w.hint}}</span>
+              <div style="display: flex; gap: 6px">
+                <button type="button" style="height: 30px; padding: 0 12px; border-radius: 6px; border: 0; background: {{w.btnBg}}; color: {{w.btnFg}}; font-weight: 500; cursor: pointer">{{w.action}}</button>
+                <button type="button" style="height: 30px; padding: 0 12px; border-radius: 6px; border: 1px solid rgba(244,241,234,0.12); background: transparent; cursor: pointer">Quitar</button>
+              </div>
+            </div>
+          </sc-for>
+        </div>
+      </aside>
+    </div>
+  </main>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":1440,"height":1000}}'>
+class Component extends DCLogic {
+  renderVals() {
+    const S = {
+      libre: { bg: 'transparent', border: 'rgba(244,241,234,0.22)', style: 'solid', lineColor: '#a39f95' },
+      sentada: { bg: 'rgba(143,199,160,0.10)', border: 'rgba(143,199,160,0.7)', style: 'solid', lineColor: '#d6d2c8' },
+      larga: { bg: 'rgba(240,163,94,0.10)', border: 'rgba(240,163,94,0.75)', style: 'solid', lineColor: '#f0a35e' },
+      pronto: { bg: 'transparent', border: '#f0a35e', style: 'dashed', lineColor: '#f0a35e' },
+      recoger: { bg: 'repeating-linear-gradient(135deg, rgba(244,241,234,0.06) 0 4px, transparent 4px 10px)', border: 'rgba(244,241,234,0.22)', style: 'solid', lineColor: '#a39f95' }
+    };
+    const T = [
+      { id: 'S1', x: 40, y: 60, w: 110, h: 84, cap: 2, st: 'pronto', line: '20:30 Pau Ferrer, retraso' },
+      { id: 'S2', x: 180, y: 60, w: 110, h: 84, cap: 2, st: 'recoger', line: 'Por recoger' },
+      { id: 'S3', x: 320, y: 60, w: 110, h: 84, cap: 2, st: 'libre', line: 'Sugerida 21:00' },
+      { id: 'S4', x: 40, y: 190, w: 150, h: 96, cap: 4, st: 'sentada', line: 'Familia Roca · 27 min', p: 22 },
+      { id: 'S5', x: 196, y: 190, w: 150, h: 96, cap: 4, st: 'sentada', line: 'unida con S4', p: 22 },
+      { id: 'S6', x: 400, y: 190, w: 150, h: 96, cap: 4, st: 'libre', line: 'Reservada 21:30' },
+      { id: 'S7', x: 40, y: 340, w: 130, h: 130, cap: 4, st: 'pronto', round: true, line: '20:30 Clara Ibáñez' },
+      { id: 'S8', x: 210, y: 340, w: 170, h: 100, cap: 6, st: 'sentada', line: 'Grupo Ortega · 1 h 05', p: 62 },
+      { id: 'S9', x: 420, y: 340, w: 130, h: 130, cap: 4, st: 'larga', round: true, line: 'Sobremesa · 2 h 10', p: 100 },
+      { id: 'S10', x: 210, y: 470, w: 170, h: 84, cap: 6, st: 'sentada', line: 'Ana Prat · 40 min', p: 38 },
+      { id: 'B1', x: 640, y: 80, w: 70, h: 64, cap: 1, st: 'sentada', line: '15 min', p: 20 },
+      { id: 'B2', x: 723, y: 80, w: 70, h: 64, cap: 2, st: 'pronto', line: '20:45' },
+      { id: 'B3', x: 806, y: 80, w: 70, h: 64, cap: 2, st: 'sentada', line: '52 min', p: 70 }
+    ];
+    const tables = T.map((t) => {
+      const s = S[t.st];
+      return {
+        ...t,
+        seats: t.cap + ' pl.',
+        radius: t.round ? '50%' : '8px',
+        bg: s.bg, border: s.border, borderStyle: s.style, lineColor: s.lineColor,
+        seated: t.st === 'sentada' || t.st === 'larga',
+        progress: t.p || 0,
+        progressColor: t.st === 'larga' ? '#f0a35e' : '#8fc7a0',
+        aria: 'Mesa ' + t.id + ', ' + t.line
+      };
+    });
+    const arrivals = [
+      { time: '20:30', name: 'Pau Ferrer', detail: '2 pers. · 12 min tarde', table: 'S1', late: true },
+      { time: '20:30', name: 'Clara Ibáñez', detail: '3 pers. · alergia a frutos secos', table: 'S7' },
+      { time: '20:45', name: 'Iván Molina', detail: '2 pers.', table: 'B2' },
+      { time: '21:00', name: 'Sara Navarro', detail: '5 pers. · señal pagada', table: 'S8', busy: true },
+      { time: '21:00', name: 'Marc Serra', detail: '2 pers.', table: 'Sin mesa', none: true }
+    ].map((a) => ({
+      ...a,
+      timeColor: a.late ? '#f0a35e' : '#f4f1ea',
+      tableBg: a.none ? 'rgba(240,163,94,0.14)' : 'rgba(244,241,234,0.07)',
+      tableFg: a.none ? '#f0a35e' : '#d6d2c8'
+    }));
+    const waiting = [
+      { name: 'Núria Bosch', size: 2, wait: '25 min', hint: 'S2 queda libre al recogerla. Se le avisará por WhatsApp.', action: 'Avisar ahora', primary: true },
+      { name: 'Grupo Lladó', size: 4, wait: '10 min', hint: 'Sin mesa de 4 hasta las 21:45.', action: 'Ofrecer 21:45' }
+    ].map((w) => ({
+      ...w,
+      hintColor: w.primary ? '#d6d2c8' : '#a39f95',
+      btnBg: w.primary ? '#f0a35e' : '#1f1f1f',
+      btnFg: w.primary ? '#1a1408' : '#f4f1ea'
+    }));
+    return { tables, arrivals, waiting };
+  }
+}
+</script>
+</body>
+</html>

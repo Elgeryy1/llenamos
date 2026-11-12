@@ -1,0 +1,33 @@
+{
+  "proyecto": "demo-llenamos",
+  "puertos": {
+    "auth": 9103,
+    "firestore": 8097,
+    "functions": 5013,
+    "web": 3012
+  },
+  "escala": 2,
+  "capturas": [
+    "escritorio-cliente-cuenta",
+    "escritorio-sin-backend",
+    "escritorio-programa",
+    "escritorio-promociones-editor",
+    "escritorio-repite",
+    "escritorio-ruta-real",
+    "tableta-cliente-cuenta",
+    "tableta-sin-backend",
+    "tableta-programa",
+    "tableta-promociones-editor",
+    "tableta-repite",
+    "tableta-ruta-real",
+    "movil-cliente-cuenta",
+    "movil-sin-backend",
+    "movil-programa",
+    "movil-promociones-editor",
+    "movil-repite",
+    "movil-ruta-real",
+    "movil-camarero"
+  ],
+  "errores": [],
+  "backendFase5": "Pendiente de integración. No se han simulado mutaciones correctas."
+}

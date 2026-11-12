@@ -1,0 +1,37 @@
+/* Controles públicos: el mismo sistema cálido, con el acento del restaurante. */
+.publica {
+  --radius: 12px;
+}
+
+.publica :is([data-slot="button"], [data-slot="toggle-group-item"], input, select, textarea) {
+  border-radius: 12px;
+}
+
+.publica :is([data-slot="button"], input:not([type="checkbox"]), select) {
+  min-height: 48px;
+}
+
+.publica [data-slot="button"][data-variant="default"] {
+  box-shadow: var(--sombra-suave);
+}
+
+.publica :is(input, select, textarea) {
+  background: var(--surface-sunken);
+  font-size: 16px;
+}
+
+.publica [data-slot="button"] {
+  white-space: normal;
+  height: auto;
+  padding-block: 10px;
+  line-height: 1.3;
+}
+
+.publica [data-slot="button"][data-variant="outline"] {
+  background: var(--card);
+  box-shadow: var(--sombra-suave);
+}
+
+.publica [data-slot="field-label"][for="reserva-acceptPolicy"] {
+  min-height: 44px;
+}
